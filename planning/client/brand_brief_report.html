@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand Brief — Tracking Faith</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0D0907;
+    --accent: #C9A96E;
+    --surface: #1A140F;
+    --surface2: #241C15;
+    --text: #F0EAE0;
+    --text-muted: #8A7A6A;
+    --border: #2E231A;
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --max: 900px;
+  }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Layout ── */
+  .page { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+  section { padding: 5rem 0; border-bottom: 1px solid var(--border); }
+  section:last-of-type { border-bottom: none; }
+
+  /* ── Cover ── */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 50% 60%, rgba(201,169,110,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cover-eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 2rem;
+  }
+  .cover-title {
+    font-family: var(--font-serif);
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--text);
+    margin-bottom: 1rem;
+  }
+  .cover-subtitle {
+    font-family: var(--font-serif);
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 2rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .cover-meta span::before { content: '— '; }
+
+  /* ── Section headers ── */
+  .section-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 2.5rem;
+  }
+
+  /* ── Business Identity ── */
+  .identity-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    padding: 2.5rem;
+  }
+  .identity-name {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+  .identity-type {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* ── Brand Feeling ── */
+  .word-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .word-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .word-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent);
+  }
+  .word-card-text {
+    font-family: var(--font-serif);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 400;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .word-card-index {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* ── Celebrity Aesthetic ── */
+  .pullquote {
+    position: relative;
+    padding: 2.5rem 2.5rem 2.5rem 3.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    margin-bottom: 2rem;
+  }
+  .pullquote::before {
+    content: '\201C';
+    position: absolute;
+    top: -0.5rem;
+    left: 1.5rem;
+    font-family: var(--font-serif);
+    font-size: 5rem;
+    color: var(--accent);
+    line-height: 1;
+    opacity: 0.4;
+  }
+  .pullquote-text {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--text);
+  }
+  .visual-signals {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+  .signal-tag {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 0.4rem 1rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+  }
+  .signal-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  /* ── Target Customer ── */
+  .customer-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+  }
+  .customer-quote {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    font-style: italic;
+    line-height: 1.65;
+    color: var(--text);
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .customer-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+  .tag {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 0.3rem 0.85rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* ── Inspiration URLs ── */
+  .url-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .url-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+  .url-card:hover { border-color: var(--accent); }
+  .url-domain {
+    font-size: 0.85rem;
+    color: var(--text);
+    font-weight: 400;
+  }
+  .url-visit {
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin-left: 1rem;
+  }
+
+  /* ── Diff table ── */
+  .diff-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .diff-table th {
+    text-align: left;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .diff-table td {
+    padding: 1rem;
+    vertical-align: top;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.85rem;
+    line-height: 1.55;
+  }
+  .diff-table td:first-child {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    width: 22%;
+    white-space: nowrap;
+  }
+  .diff-table .col-before { color: var(--text-muted); }
+  .diff-table .col-after { color: var(--text); }
+  .diff-table tr:last-child td { border-bottom: none; }
+
+  /* ── Print ── */
+  @media print {
+    .no-print { display: none; }
+    body { background: white; color: #111; }
+    :root {
+      --bg: white;
+      --surface: #f5f5f5;
+      --surface2: #ebebeb;
+      --text: #111;
+      --text-muted: #555;
+      --border: #ddd;
+      --accent: #8B6914;
+    }
+    .cover { min-height: auto; padding: 4rem 0; }
+    section { page-break-before: always; }
+    .cover { page-break-before: avoid; }
+    a { color: inherit; text-decoration: none; }
+  }
+
+  @media (max-width: 600px) {
+    .word-grid { grid-template-columns: 1fr; }
+    .url-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════ COVER ══════════════════ -->
+<div class="cover page">
+  <div class="cover-eyebrow">Brand Brief</div>
+  <h1 class="cover-title">Tracking<br>Faith</h1>
+  <p class="cover-subtitle">Brand Discovery Document</p>
+  <div class="cover-meta">
+    <span>May 2026</span>
+    <span>Prepared by Raspucat</span>
+  </div>
+</div>
+
+<!-- ══════════════════ BUSINESS IDENTITY ══════════════════ -->
+<section>
+  <div class="page">
+    <div class="section-label">01 — Business Identity</div>
+    <h2 class="section-title">Who We Are</h2>
+    <div class="identity-card">
+      <div class="identity-name">Tracking Faith</div>
+      <div class="identity-type">
+        Cross-tradition scripture and mythology comparison platform — tracking how texts were translated, selected, and interpreted across cultures, with scholarship cited behind every claim.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ BRAND FEELING ══════════════════ -->
+<section>
+  <div class="page">
+    <div class="section-label">02 — Brand Feeling</div>
+    <h2 class="section-title">How We Want People to Feel</h2>
+    <div class="word-grid">
+      <div class="word-card">
+        <span class="word-card-text">Trusted</span>
+        <span class="word-card-index">Word 01</span>
+      </div>
+      <div class="word-card">
+        <span class="word-card-text">Ancient</span>
+        <span class="word-card-index">Word 02</span>
+      </div>
+      <div class="word-card">
+        <span class="word-card-text">Modern</span>
+        <span class="word-card-index">Word 03</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ CELEBRITY AESTHETIC ══════════════════ -->
+<section>
+  <div class="page">
+    <div class="section-label">03 — Celebrity Aesthetic</div>
+    <h2 class="section-title">The Aesthetic Reference</h2>
+    <div class="pullquote">
+      <p class="pullquote-text">
+        Morgan Freeman + David Blaine — Freeman's gravitas and calm authority combined with Blaine's sense of mystery and revelation; makes the unexplained feel worth investigating.
+      </p>
+    </div>
+    <div class="signal-label">Visual signals to draw from this aesthetic</div>
+    <div class="visual-signals">
+      <span class="signal-tag">Deep gravitas</span>
+      <span class="signal-tag">Calm authority</span>
+      <span class="signal-tag">Mystery without gimmick</span>
+      <span class="signal-tag">The unexplained made worthy</span>
+      <span class="signal-tag">Slow revelation</span>
+      <span class="signal-tag">Storyteller presence</span>
+      <span class="signal-tag">Ancient + theatrical</span>
+      <span class="signal-tag">Trust before wonder</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ TARGET CUSTOMER ══════════════════ -->
+<section>
+  <div class="page">
+    <div class="section-label">04 — Target Customer</div>
+    <h2 class="section-title">Who We Serve</h2>
+    <div class="customer-card">
+      <p class="customer-quote">
+        "Skeptical seekers and believers alike, 20–55, who want to track faith and scripture across traditions with academic rigor — driven by curiosity, not doctrine."
+      </p>
+      <div class="customer-tags">
+        <span class="tag">Ages 20–55</span>
+        <span class="tag">Skeptical seekers</span>
+        <span class="tag">Curious believers</span>
+        <span class="tag">Academic rigor</span>
+        <span class="tag">Cross-tradition</span>
+        <span class="tag">Curiosity-driven</span>
+        <span class="tag">Not doctrine-bound</span>
+        <span class="tag">Scripture trackers</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ INSPIRATION URLS ══════════════════ -->
+<section>
+  <div class="page">
+    <div class="section-label">05 — Design Inspiration</div>
+    <h2 class="section-title">Sites That Feel Right</h2>
+    <div class="url-grid">
+      <a class="url-card" href="https://www.newmixcoffee.com/en" target="_blank" rel="noopener">
+        <span class="url-domain">newmixcoffee.com</span>
+        <span class="url-visit">Visit →</span>
+      </a>
+      <a class="url-card" href="https://museum.unesco.org/" target="_blank" rel="noopener">
+        <span class="url-domain">museum.unesco.org</span>
+        <span class="url-visit">Visit →</span>
+      </a>
+      <a class="url-card" href="https://digital-influence.org/?preloader=true" target="_blank" rel="noopener">
+        <span class="url-domain">digital-influence.org</span>
+        <span class="url-visit">Visit →</span>
+      </a>
+      <a class="url-card" href="https://www.pieterkoopt.nl/" target="_blank" rel="noopener">
+        <span class="url-domain">pieterkoopt.nl</span>
+        <span class="url-visit">Visit →</span>
+      </a>
+      <a class="url-card" href="https://obys.agency/" target="_blank" rel="noopener">
+        <span class="url-domain">obys.agency</span>
+        <span class="url-visit">Visit →</span>
+      </a>
+      <a class="url-card" href="https://www.flyward.com/" target="_blank" rel="noopener">
+        <span class="url-domain">flyward.com</span>
+        <span class="url-visit">Visit →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ DIFF TABLE ══════════════════ -->
+<section>
+  <div class="page">
+    <div class="section-label">06 — Before / After</div>
+    <h2 class="section-title">What Changed</h2>
+    <table class="diff-table">
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>Before</th>
+          <th>After</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Business Type</td>
+          <td class="col-before"><em>(missing)</em></td>
+          <td class="col-after">Cross-tradition scripture and mythology comparison platform — tracking how texts were translated, selected, and interpreted across cultures, with scholarship cited behind every claim</td>
+        </tr>
+        <tr>
+          <td>Brand Three Words</td>
+          <td class="col-before">Trustworthy, enlightenment, innovative</td>
+          <td class="col-after">Trusted Ancient Modern</td>
+        </tr>
+        <tr>
+          <td>Celebrity</td>
+          <td class="col-before">Morgan Freeman / David Blaine</td>
+          <td class="col-after">Morgan Freeman + David Blaine — Freeman's gravitas and calm authority combined with Blaine's sense of mystery and revelation; makes the unexplained feel worth investigating</td>
+        </tr>
+        <tr>
+          <td>Target Customer</td>
+          <td class="col-before">Learning about Faith</td>
+          <td class="col-after">Skeptical seekers and believers alike, 20–55, who want to track faith and scripture across traditions with academic rigor — driven by curiosity, not doctrine</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+</body>
+</html>

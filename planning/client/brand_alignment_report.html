@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand Alignment Report — Tracking Faith</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0D1B2A;
+    --bg2: #101F30;
+    --surface: #152333;
+    --surface2: #1A2C3F;
+    --border: #1F3349;
+    --primary: #B8965A;
+    --primary-dim: rgba(184,150,90,0.12);
+    --secondary: #1C3350;
+    --accent: #D4B483;
+    --text: #F0EAE0;
+    --text-muted: #8A9EAF;
+    --text-dim: #4A6070;
+    --red: #E05252;
+    --yellow: #E8BC5A;
+    --green: #4CAF7D;
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --max: 960px;
+  }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Layout ── */
+  .page { max-width: var(--max); margin: 0 auto; padding: 0 2.5rem; }
+  section { padding: 5rem 0; border-bottom: 1px solid var(--border); }
+  section:last-of-type { border-bottom: none; }
+
+  /* ── Cover ── */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 6rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(155deg, #0D1B2A 50%, #0F2038 100%);
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 15%;
+    right: -8%;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(184,150,90,0.08) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .cover-badge {
+    display: inline-block;
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    padding: 0.4rem 1.1rem;
+    margin-bottom: 2.5rem;
+    width: fit-content;
+  }
+  .cover-title {
+    font-family: var(--font-serif);
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    margin-bottom: 0.75rem;
+  }
+  .cover-title span { color: var(--primary); }
+  .cover-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 3.5rem;
+    max-width: 520px;
+    line-height: 1.7;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 2.5rem;
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-top: 1px solid var(--border);
+    padding-top: 1.5rem;
+  }
+
+  /* ── Section header ── */
+  .section-num {
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 0.4rem;
+  }
+  .section-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+  .section-lead {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    max-width: 640px;
+    margin-bottom: 2.5rem;
+    line-height: 1.75;
+  }
+
+  /* ── COLOR PALETTE ── */
+  .palette-row {
+    margin-bottom: 2rem;
+  }
+  .palette-label {
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 1rem;
+  }
+  .swatches {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .swatch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .swatch-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.08);
+    flex-shrink: 0;
+  }
+  .swatch-hex {
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    font-family: monospace;
+  }
+  .swatch-name {
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    text-align: center;
+  }
+  .palette-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    color: var(--text-dim);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .palette-divider::before,
+  .palette-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── TYPOGRAPHY ── */
+  .font-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .font-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    position: relative;
+  }
+  .font-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--primary);
+  }
+  .font-role {
+    font-size: 0.58rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 1rem;
+  }
+  .font-display-serif {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 2.5rem;
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+  .font-display-sans {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+  }
+  .font-body-serif {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+  .font-body-sans {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin-bottom: 1rem;
+  }
+  .font-name {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: var(--text-dim);
+  }
+
+  /* ── SECTION FLOW ── */
+  .flow-comparison {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  .flow-col-label {
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 1rem;
+  }
+  .flow-arrow-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 2.5rem;
+    color: var(--primary);
+    font-size: 1.5rem;
+  }
+  .flow-items { display: flex; flex-direction: column; gap: 0.5rem; }
+  .flow-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 0.6rem 1rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .flow-item.removed {
+    background: rgba(224,82,82,0.06);
+    border-color: rgba(224,82,82,0.2);
+    color: var(--text-muted);
+    text-decoration: line-through;
+  }
+  .flow-item.added {
+    background: rgba(76,175,125,0.06);
+    border-color: rgba(76,175,125,0.25);
+    color: var(--green);
+  }
+  .flow-item.kept {
+    background: var(--surface);
+    border-color: var(--border);
+  }
+  .flow-item-num {
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: var(--text-dim);
+    min-width: 1.2rem;
+  }
+  .flow-note {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-top: 1.25rem;
+    line-height: 1.6;
+    padding: var(--border) 0;
+  }
+
+  /* ── ANIMATION VOCABULARY ── */
+  .anim-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .anim-table th {
+    text-align: left;
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    padding: 0.7rem 1rem;
+    border-bottom: 2px solid var(--border);
+    background: var(--surface2);
+  }
+  .anim-table td {
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.8rem;
+    vertical-align: top;
+  }
+  .anim-table tr:last-child td { border-bottom: none; }
+  .anim-table tr:hover td { background: var(--surface); }
+  .code {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.72rem;
+    color: var(--primary);
+    background: var(--primary-dim);
+    padding: 0.15rem 0.45rem;
+    border-radius: 2px;
+  }
+
+  /* ── GUEST FLOW FUNNEL ── */
+  .funnel { display: flex; flex-direction: column; gap: 0; }
+  .funnel-step {
+    display: grid;
+    grid-template-columns: 3.5rem 1fr;
+    gap: 1.25rem;
+    position: relative;
+  }
+  .funnel-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 1.5rem;
+    top: 3.5rem;
+    bottom: -1rem;
+    width: 1px;
+    background: var(--border);
+  }
+  .funnel-num-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0.25rem;
+  }
+  .funnel-num {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: var(--primary-dim);
+    border: 1px solid var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--primary);
+    flex-shrink: 0;
+  }
+  .funnel-body { padding: 0.5rem 0 2.5rem; }
+  .funnel-title {
+    font-size: 0.92rem;
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+  }
+  .funnel-detail {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+  .funnel-cta {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    padding: 0.3rem 0.85rem;
+  }
+
+  /* ── CONFLICTS & GAPS ── */
+  .gap-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .gap-table th {
+    text-align: left;
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    padding: 0.7rem 1.1rem;
+    border-bottom: 2px solid var(--border);
+    background: var(--surface2);
+  }
+  .gap-table td {
+    padding: 1rem 1.1rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.8rem;
+    vertical-align: top;
+    line-height: 1.6;
+  }
+  .gap-table tr:last-child td { border-bottom: none; }
+  .severity {
+    font-size: 1rem;
+    margin-right: 0.4rem;
+  }
+  .sev-label {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+  .sev-critical { color: var(--red); }
+  .sev-moderate { color: var(--yellow); }
+  .sev-aligned { color: var(--green); }
+
+  /* ── DIFF SUMMARY ── */
+  .diff-block {
+    font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
+    font-size: 0.78rem;
+    line-height: 1.8;
+    background: #090F16;
+    border: 1px solid var(--border);
+    padding: 1.5rem 1.75rem;
+    overflow-x: auto;
+  }
+  .diff-line { display: block; padding: 0.1rem 0; }
+  .diff-line.removed {
+    color: #F87171;
+    background: rgba(248,113,113,0.06);
+  }
+  .diff-line.added {
+    color: #6EE7B7;
+    background: rgba(110,231,183,0.06);
+  }
+  .diff-line.context { color: var(--text-dim); }
+  .diff-note {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-top: 1rem;
+    line-height: 1.65;
+  }
+
+  /* ── Print ── */
+  @media print {
+    .no-print { display: none; }
+    body { background: white; color: #111; }
+    :root {
+      --bg: white;
+      --bg2: #f9f9f9;
+      --surface: #f2f2f2;
+      --surface2: #e9e9e9;
+      --border: #d0d0d0;
+      --text: #111;
+      --text-muted: #555;
+      --text-dim: #888;
+      --primary: #8B6D2A;
+    }
+    .cover { min-height: auto; padding: 3rem 0; background: none; page-break-before: avoid; }
+    .cover::before { display: none; }
+    section { page-break-before: always; }
+    a { color: inherit; }
+  }
+
+  @media (max-width: 600px) {
+    .font-cards { grid-template-columns: 1fr; }
+    .flow-comparison { grid-template-columns: 1fr; }
+    .flow-arrow-col { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════ COVER ══════════════════ -->
+<div class="cover">
+  <div class="cover-badge">Brand Alignment Report</div>
+  <h1 class="cover-title">Tracking<br><span>Faith</span></h1>
+  <p class="cover-subtitle">Visual identity recommendations derived from 6 inspiration URLs and 5 competitor profiles. Covers color, typography, layout, animation, conversion flow, and strategic gaps.</p>
+  <div class="cover-meta">
+    <span>May 2026</span>
+    <span>6 Inspo URLs · 5 Competitors</span>
+    <span>Prepared by Raspucat</span>
+  </div>
+</div>
+
+<!-- ══════════════════ COLOR PALETTE ══════════════════ -->
+<section>
+  <div class="page">
+    <div class="section-num">01 — Color Palette</div>
+    <h2 class="section-title">Current vs. Recommended</h2>
+    <p class="section-lead">Derived from cross-site analysis of 6 inspiration URLs. The "Trusted Ancient Modern" brand feeling maps to a dark scholarly backdrop with warm aged-gold accents — museum-grade authority, not corporate cool.</p>
+
+    <!-- Current -->
+    <div class="palette-row">
+      <div class="palette-label">Current (all FILL_IN)</div>
+      <div class="swatches">
+        <div class="swatch">
+          <div class="swatch-circle" style="background:#333;border:2px dashed #555;"></div>
+          <span class="swatch-hex">FILL_IN</span>
+          <span class="swatch-name">Primary</span>
+        </div>
+        <div class="swatch">
+          <div class="swatch-circle" style="background:#333;border:2px dashed #555;"></div>
+          <span class="swatch-hex">FILL_IN</span>
+          <span class="swatch-name">Secondary</span>
+        </div>
+        <div class="swatch">
+          <div class="swatch-circle" style="background:#333;border:2px dashed #555;"></div>
+          <span class="swatch-hex">FILL_IN</span>
+          <span class="swatch-name">Accent</span>
+        </div>
+        <div class="swatch">
+          <div class="swatch-circle" style="background:#333;border:2px dashed #555;"></div>
+          <span class="swatch-hex">FILL_IN</span>
+          <span class="swatch-name">Surface</span>
+        </div>
+        <div class="swatch">
+          <div class="swatch-circle" style="background:#333;border:2px dashed #555;"></div>
+          <span class="swatch-hex">FILL_IN</span>
+          <span class="swatch-name">On Surface</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="palette-divider">Recommended</div>
+
+    <!-- Recommended -->
+    <div class="palette-row">
+      <div class="palette-label">Recommended</div>
+      <div class="swatches">
+        <div class="swatch">
+          <div class="swatch-circle" style="background:#B8965A;"></div>
+          <span class="swatch-hex">#B8965A</span>
+          <span class="swatch-name">Primary</span>
+        </div>
+        <div class="swatch">
+          <div class="swatch-circle" style="background:#1C3350;"></div>
+          <span class="swatch-hex">#1C3350</span>
+          <span class="swatch-name">Secondary</span>
+        </div>
+        <div class="swatch">
+          <div class="swatch-circle" style="background:#D4B483;"></div>
+          <span class="swatch-hex">#D4B483</span>
+          <span class="swatch-name">Accent</span>
+        </div>
+        <div class="swatch">
+          <div class="swatch-circle" style="background:#0D1B2A;border:1px solid #1F3349;"></div>
+          <span class="swatch-hex">#0D1B2A</span>
+          <span class="swatch-name">Surface</span>
+        </div>
+        <div class="swatch">
+          <div class="swatch-circle" style="background:#F0EAE0;"></div>
+          <span class="swatch-hex">#F0EAE0</span>
+          <span class="swatch-name">On Surface</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ TYPOGRAPHY ══════════════════ -->
+<section>
+  <div class="page">
+    <div class="section-num">02 — Typography</div>
+    <h2 class="section-title">Font Pairing</h2>
+    <p class="section-lead">Cormorant Garamond (primary serif) + Inter (secondary sans). The pairing embodies "Ancient Modern" — scholarly gravity in display, clean readability in body. Validated for academic knowledge platforms (British Museum, Smithsonian digital).</p>
+
+    <div class="font-cards">
+      <div class="font-card">
+        <div class="font-role">FONT_PRIMARY — Display / Headings</div>
+        <div class="font-display-serif">Tracking Faith</div>
+        <div class="font-body-serif">Ancient wisdom, cited with precision.</div>
+        <div class="font-name">Cormorant Garamond · Weights 300, 400, 600</div>
+      </div>
+      <div class="font-card">
+        <div class="font-role">FONT_SECONDARY — Body / UI</div>
+        <div class="font-display-sans">Academic Rigor</div>
+        <div class="font-body-sans">Skeptical seekers and believers alike, 20–55, who want to track faith and scripture across traditions with academic rigor — driven by curiosity, not doctrine.</div>
+        <div class="font-name">Inter · Weights 300, 400, 500, 600</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ SECTION FLOW ══════════════════ -->
+<section>
+  <div class="page">
+    <div class="section-num">03 — Section Flow</div>
+    <h2 class="section-title">HOME_SECTIONS Redesign</h2>
+    <p class="section-lead">Current sections follow a retail/service pattern. Recommended sections follow the trust-first, free-entry funnel proven by all 5 competitors and consistent with 4/6 inspiration sites.</p>
+
+    <div class="flow-comparison">
+      <div>
+        <div class="flow-col-label">Current</div>
+        <div class="flow-items">
+          <div class="flow-item kept"><span class="flow-item-num">1</span>hero</div>
+          <div class="flow-item removed"><span class="flow-item-num">2</span>services</div>
+          <div class="flow-item kept"><span class="flow-item-num">3</span>testimonials</div>
+          <div class="flow-item kept"><span class="flow-item-num">4</span>faq</div>
+          <div class="flow-item kept"><span class="flow-item-num">5</span>cta</div>
+        </div>
+      </div>
+      <div class="flow-arrow-col">→</div>
+      <div>
+        <div class="flow-col-label">Recommended</div>
+        <div class="flow-items">
+          <div class="flow-item kept"><span class="flow-item-num">1</span>hero</div>
+          <div class="flow-item added"><span class="flow-item-num">2</span>features ← replaces "services"</div>
+          <div class="flow-item added"><span class="flow-item-num">3</span>about ← new</div>
+          <div class="flow-item kept"><span class="flow-item-num">4</span>testimonials</div>
+          <div class="flow-item added"><span class="flow-item-num">5</span>partners ← new</div>
+          <div class="flow-item kept"><span class="flow-item-num">6</span>faq</div>
+          <div class="flow-item kept"><span class="flow-item-num">7</span>cta</div>
+        </div>
+      </div>
+    </div>
+    <p class="flow-note" style="margin-top:1.5rem; font-size:0.78rem; color:var(--text-muted);">
+      <strong style="color:var(--text);">Why "features" not "services":</strong> "Services" signals a transaction. "Features" signals a platform. 5/5 competitors use outcome-based, platform-framing language. The target customer (skeptics) will read "services" as commercial and disengage.<br><br>
+      <strong style="color:var(--text);">Why "about" before "testimonials":</strong> For a trust-first academic platform, establishing who built this (credentials, mission) must precede asking the visitor to believe third-party testimonials. Present in 4/5 competitors.<br><br>
+      <strong style="color:var(--text);">Why "partners":</strong> Institutional logos (SBL, universities, media outlets) are the single highest-ROI trust signal in this niche. Present in 4/5 competitors and 4/6 inspiration sites.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════ ANIMATION VOCABULARY ══════════════════ -->
+<section>
+  <div class="page">
+    <div class="section-num">04 — Animation Vocabulary</div>
+    <h2 class="section-title">Motion in Flutter</h2>
+    <p class="section-lead">The inspiration sites use controlled revelation — not entertainment. Elements appear intentionally. This maps directly to David Blaine's aesthetic: the reveal is yours to witness, not pushed at you. All animations should feel chosen, not automatic.</p>
+
+    <table class="anim-table">
+      <thead>
+        <tr>
+          <th>Effect</th>
+          <th>Flutter Widget / Pattern</th>
+          <th>Timing</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Hero text reveal on load</td>
+          <td><span class="code">AnimatedOpacity</span> + <span class="code">SlideTransition</span></td>
+          <td>300ms delay, 400ms ease-out</td>
+        </tr>
+        <tr>
+          <td>Section fade-in on scroll</td>
+          <td><span class="code">Visibility</span> + <span class="code">AnimatedOpacity</span> triggered by scroll controller offset</td>
+          <td>250ms ease-in-out</td>
+        </tr>
+        <tr>
+          <td>CTA button press</td>
+          <td><span class="code">ScaleTransition</span> (0.97 → 1.0)</td>
+          <td>150ms ease-out</td>
+        </tr>
+        <tr>
+          <td>Nav darken on scroll</td>
+          <td><span class="code">AnimatedContainer</span> color tween on scroll position</td>
+          <td>200ms linear</td>
+        </tr>
+        <tr>
+          <td>Card hover (web)</td>
+          <td><span class="code">MouseRegion</span> + <span class="code">AnimatedContainer</span> border-color tween</td>
+          <td>150ms ease</td>
+        </tr>
+        <tr>
+          <td>Page entry transition</td>
+          <td><span class="code">FadeTransition</span> (opacity 0 → 1) — no slide</td>
+          <td>400ms ease-in-out</td>
+        </tr>
+        <tr>
+          <td>Image progressive load</td>
+          <td><span class="code">FadeInImage</span> with dark placeholder color</td>
+          <td>300ms ease-in</td>
+        </tr>
+        <tr>
+          <td style="color:var(--red);">❌ Avoid: Lottie celebrations</td>
+          <td style="color:var(--text-dim);">— confetti, bounces, particle effects</td>
+          <td style="color:var(--text-dim);">Not brand-aligned</td>
+        </tr>
+        <tr>
+          <td style="color:var(--red);">❌ Avoid: Auto-play carousel</td>
+          <td style="color:var(--text-dim);">— rotating content without user input</td>
+          <td style="color:var(--text-dim);">Not brand-aligned</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════════════ GUEST FLOW ══════════════════ -->
+<section>
+  <div class="page">
+    <div class="section-num">05 — Guest Flow</div>
+    <h2 class="section-title">From Landing to Conversion</h2>
+    <p class="section-lead">Free content first. Trust before ask. Membership as a voluntary act of support — not a paywall. Derived from 4/5 competitors and 5/6 inspiration sites.</p>
+
+    <div class="funnel">
+      <div class="funnel-step">
+        <div class="funnel-num-wrap">
+          <div class="funnel-num">1</div>
+        </div>
+        <div class="funnel-body">
+          <div class="funnel-title">Hero — "Explore the Texts"</div>
+          <div class="funnel-detail">Full-bleed dark hero. Large serif headline. Single CTA. Trust subtext: tagline + one scholar credential. No pricing. No account wall. The visitor can proceed without deciding anything.</div>
+          <div class="funnel-cta">CTA: "Explore the Texts"</div>
+        </div>
+      </div>
+      <div class="funnel-step">
+        <div class="funnel-num-wrap">
+          <div class="funnel-num">2</div>
+        </div>
+        <div class="funnel-body">
+          <div class="funnel-title">Free Content — Browse without account</div>
+          <div class="funnel-detail">Visitor reads a comparison, views a text, follows a citation. Zero friction. The content is the CTA. 4/5 competitors and all 6 inspiration sites gate nothing at this stage. The content earns the next step.</div>
+        </div>
+      </div>
+      <div class="funnel-step">
+        <div class="funnel-num-wrap">
+          <div class="funnel-num">3</div>
+        </div>
+        <div class="funnel-body">
+          <div class="funnel-title">Soft prompt — "Track your reading"</div>
+          <div class="funnel-detail">After meaningful engagement (3+ page views, or reaching a key comparison page), a subtle inline prompt: "Track which texts you've read — create a free account." Lightweight. No modal. No countdown.</div>
+          <div class="funnel-cta">CTA: "Start tracking — free"</div>
+        </div>
+      </div>
+      <div class="funnel-step">
+        <div class="funnel-num-wrap">
+          <div class="funnel-num">4</div>
+        </div>
+        <div class="funnel-body">
+          <div class="funnel-title">Account dashboard — premium features visible</div>
+          <div class="funnel-detail">Free account unlocks tracking, highlights, and saved comparisons. Premium features (annotation sets, citation export, cross-tradition comparison packs) are visible but gated — not hidden. Modeled on Ehrman Blog's tier transparency.</div>
+        </div>
+      </div>
+      <div class="funnel-step">
+        <div class="funnel-num-wrap">
+          <div class="funnel-num">5</div>
+        </div>
+        <div class="funnel-body">
+          <div class="funnel-title">Conversion — membership or one-time support</div>
+          <div class="funnel-detail">Positioned as "support scholarly independence" — Ehrman Blog's 100%-to-charity model proves this framing converts skeptics. Not a paywall. A voluntary contribution with clear access benefits.</div>
+          <div class="funnel-cta">CTA: "Support the research"</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ CONFLICTS & GAPS ══════════════════ -->
+<section>
+  <div class="page">
+    <div class="section-num">06 — Conflicts &amp; Gaps</div>
+    <h2 class="section-title">What Needs Attention</h2>
+    <p class="section-lead">Items derived from the brand brief, inspo URL analysis, and competitor blueprint. Ordered by severity.</p>
+
+    <table class="gap-table">
+      <thead>
+        <tr>
+          <th style="width:15%;">Severity</th>
+          <th style="width:30%;">Issue</th>
+          <th>Finding &amp; Recommendation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="sev-label sev-critical">🔴 Critical</span></td>
+          <td><strong>No blog module</strong></td>
+          <td>4/5 competitors and 4/6 inspo sites use long-form articles as primary SEO and trust engine. The entire keyword space ("canon formation", "bible translation history") is informational — won by content depth. Without blog, Tracking Faith cannot rank or build long-term trust. Add "blog" to MODULES and HOME_SECTIONS.</td>
+        </tr>
+        <tr>
+          <td><span class="sev-label sev-critical">🔴 Critical</span></td>
+          <td><strong>No scholar credential / about section</strong></td>
+          <td>5/5 competitors anchor trust with a named person (institution + title) before the CTA. For a platform targeting skeptics, unattributed content = zero credibility. An "about" section with contributor profiles is table stakes. Add "about" to HOME_SECTIONS and implement contributor credential display.</td>
+        </tr>
+        <tr>
+          <td><span class="sev-label sev-moderate">🟡 Moderate</span></td>
+          <td><strong>"services" label mismatch</strong></td>
+          <td>Retail/commercial framing ("services") creates cognitive dissonance for the target customer. Replace with "features" in HOME_SECTIONS. 5/5 competitors use platform-framing language, never "services."</td>
+        </tr>
+        <tr>
+          <td><span class="sev-label sev-moderate">🟡 Moderate</span></td>
+          <td><strong>No partner/institutional logos</strong></td>
+          <td>Institutional logos are the highest-ROI trust signal in this niche. 4/5 competitors use them. Flyward.com (inspiration) uses IATA + partner logos as primary trust anchor. Add "partners" to HOME_SECTIONS.</td>
+        </tr>
+        <tr>
+          <td><span class="sev-label sev-moderate">🟡 Moderate</span></td>
+          <td><strong>"peaceful" tension vs. David Blaine</strong></td>
+          <td>PERSONALITY includes "peaceful" — correct for the scholarly container (no sales noise, no urgency). But the David Blaine celebrity reference requires "moments of controlled dramatic revelation." The design must be quiet until it speaks, then speak with force. Ensure the Flutter personality preset allows atmospheric dark sections and bold typographic reveals.</td>
+        </tr>
+        <tr>
+          <td><span class="sev-label sev-aligned">🟢 Aligned</span></td>
+          <td>Color approach (dark + warm gold)</td>
+          <td>5/6 inspo sites support dark backgrounds. Warm gold aligns with manuscript/parchment aesthetic for "Ancient." No conflicts across inspo URL set.</td>
+        </tr>
+        <tr>
+          <td><span class="sev-label sev-aligned">🟢 Aligned</span></td>
+          <td>Cormorant + Inter pairing</td>
+          <td>Industry-validated for academic knowledge platforms. Aligns with "Trusted Ancient Modern." No conflict with inspo URL aesthetic.</td>
+        </tr>
+        <tr>
+          <td><span class="sev-label sev-aligned">🟢 Aligned</span></td>
+          <td>faq, testimonials, cta</td>
+          <td>These sections are appropriate and correctly positioned. Testimonials must be scholar-attributed (not star ratings) — REVIEWS_ENABLED=false is correct.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════════════ DIFF SUMMARY ══════════════════ -->
+<section>
+  <div class="page">
+    <div class="section-num">07 — Diff Summary</div>
+    <h2 class="section-title">Recommended client.json Changes</h2>
+    <p class="section-lead">Only fields where the recommendation differs from the current value. Apply these before running <code style="font-size:0.8em;color:var(--primary);">/build</code>.</p>
+
+    <div class="diff-block">
+      <span class="diff-line context">// Color system</span>
+      <span class="diff-line removed">- "COLOR_PRIMARY": "FILL_IN",</span>
+      <span class="diff-line added">+ "COLOR_PRIMARY": "B8965A",</span>
+      <span class="diff-line context"></span>
+      <span class="diff-line removed">- "COLOR_SECONDARY": "FILL_IN",</span>
+      <span class="diff-line added">+ "COLOR_SECONDARY": "1C3350",</span>
+      <span class="diff-line context"></span>
+      <span class="diff-line removed">- "COLOR_ACCENT": "FILL_IN",</span>
+      <span class="diff-line added">+ "COLOR_ACCENT": "D4B483",</span>
+      <span class="diff-line context"></span>
+      <span class="diff-line removed">- "COLOR_SURFACE": "FILL_IN",</span>
+      <span class="diff-line added">+ "COLOR_SURFACE": "0D1B2A",</span>
+      <span class="diff-line context"></span>
+      <span class="diff-line removed">- "COLOR_ON_SURFACE": "FILL_IN",</span>
+      <span class="diff-line added">+ "COLOR_ON_SURFACE": "F0EAE0",</span>
+      <span class="diff-line context"></span>
+      <span class="diff-line context">// Typography</span>
+      <span class="diff-line removed">- "FONT_PRIMARY": "FILL_IN",</span>
+      <span class="diff-line added">+ "FONT_PRIMARY": "Cormorant Garamond",</span>
+      <span class="diff-line context"></span>
+      <span class="diff-line removed">- "FONT_SECONDARY": "FILL_IN",</span>
+      <span class="diff-line added">+ "FONT_SECONDARY": "Inter",</span>
+      <span class="diff-line context"></span>
+      <span class="diff-line context">// Layout</span>
+      <span class="diff-line removed">- "HERO_VARIANT": "FILL_IN",</span>
+      <span class="diff-line added">+ "HERO_VARIANT": "cinematic_dark_text",</span>
+      <span class="diff-line context"></span>
+      <span class="diff-line removed">- "NAV_STYLE": "FILL_IN",</span>
+      <span class="diff-line added">+ "NAV_STYLE": "minimal_sticky_transparent",</span>
+      <span class="diff-line context"></span>
+      <span class="diff-line removed">- "HOME_SECTIONS": "hero,services,testimonials,faq,cta",</span>
+      <span class="diff-line added">+ "HOME_SECTIONS": "hero,features,about,testimonials,partners,faq,cta",</span>
+    </div>
+
+    <p class="diff-note">
+      <strong style="color:var(--text);">Not included in diff:</strong> MODULES — adding "blog" and "about" requires a separate decision on content strategy and scope. Flagged in Section 06 as critical but excluded here since it requires more than a string change.
+    </p>
+  </div>
+</section>
+
+</body>
+</html>

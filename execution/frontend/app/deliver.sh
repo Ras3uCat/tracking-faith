@@ -35,6 +35,12 @@ MOBILE=false
 DRY_RUN=false
 REGISTER_WEBHOOKS=false
 WEBHOOKS_REGISTERED=false
+STRIPE_SK_PUSHED=false
+AUTH_URLS_SET=false
+JWT_HOOK_SET=false
+MFA_SET=false
+TEMPLATES_SET=false
+GALLERY_BUCKET_CREATED=false
 SMOKE_TEST=false
 
 for arg in "$@"; do

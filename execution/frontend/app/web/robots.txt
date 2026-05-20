@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /admin
 
-Sitemap: CLIENT_URL/sitemap.xml
+Sitemap: FILL_IN/sitemap.xml

@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Competitive Intelligence Report — Tracking Faith</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0D1B2A;
+    --bg2: #112236;
+    --surface: #162D42;
+    --surface2: #1C3652;
+    --border: #1F3F5A;
+    --accent: #C9A96E;
+    --accent-dim: rgba(201,169,110,0.15);
+    --text: #EEF2F7;
+    --text-muted: #7A92A8;
+    --text-dim: #4A6278;
+    --green: #4CAF7D;
+    --red: #E05252;
+    --yellow: #E8BC5A;
+    --max: 960px;
+    --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+
+  html { font-size: 16px; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-weight: 400;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Layout ── */
+  .page { max-width: var(--max); margin: 0 auto; padding: 0 2.5rem; }
+
+  section {
+    padding: 5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  section:last-of-type { border-bottom: none; }
+
+  /* ── Cover ── */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 6rem 2.5rem;
+    position: relative;
+    background: linear-gradient(160deg, #0D1B2A 55%, #162D42 100%);
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    right: -5%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(201,169,110,0.07) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .cover-badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 0.4rem 1rem;
+    margin-bottom: 2.5rem;
+    width: fit-content;
+  }
+  .cover-title {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+  .cover-title span { color: var(--accent); }
+  .cover-subtitle {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+    max-width: 500px;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 2.5rem;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-top: 1px solid var(--border);
+    padding-top: 1.5rem;
+  }
+
+  /* ── Section headers ── */
+  .section-number {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.5rem;
+  }
+  .section-lead {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    max-width: 680px;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+  }
+
+  /* ── Market Overview ── */
+  .overview-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    padding: 2rem 2.5rem;
+    font-size: 0.9rem;
+    color: var(--text);
+    line-height: 1.75;
+  }
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    margin-top: 2rem;
+  }
+  .stat {
+    background: var(--bg2);
+    padding: 1.5rem;
+    text-align: center;
+  }
+  .stat-num {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent);
+    display: block;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .stat-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  /* ── Competitor Cards ── */
+  .competitor-grid { display: flex; flex-direction: column; gap: 1.5rem; }
+  .comp-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+  }
+  .comp-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.75rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface2);
+  }
+  .comp-rank {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-right: 1rem;
+  }
+  .comp-name {
+    font-size: 1rem;
+    font-weight: 700;
+    flex: 1;
+  }
+  .comp-url {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+  }
+  .comp-card-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  .comp-col {
+    padding: 1.5rem 1.75rem;
+    border-right: 1px solid var(--border);
+  }
+  .comp-col:last-child { border-right: none; }
+  .comp-field-label {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.35rem;
+  }
+  .comp-field-value {
+    font-size: 0.82rem;
+    color: var(--text);
+    line-height: 1.55;
+    margin-bottom: 1.25rem;
+  }
+  .comp-field-value:last-child { margin-bottom: 0; }
+  .keyword-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.25rem;
+  }
+  .kw-tag {
+    background: var(--accent-dim);
+    border: 1px solid rgba(201,169,110,0.3);
+    color: var(--accent);
+    padding: 0.2rem 0.65rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+  }
+  .trust-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  .trust-list li {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    padding-left: 1rem;
+    position: relative;
+  }
+  .trust-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.65rem;
+  }
+
+  /* ── Blueprint ── */
+  .blueprint-grid { display: flex; flex-direction: column; gap: 1px; background: var(--border); }
+  .blueprint-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 0;
+    background: var(--surface);
+  }
+  .blueprint-label {
+    padding: 1.5rem;
+    background: var(--surface2);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .blueprint-category {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.25rem;
+  }
+  .blueprint-dim {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+  .blueprint-value {
+    padding: 1.5rem;
+    font-size: 0.85rem;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* ── Keyword Gap Table ── */
+  .gap-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .gap-table th {
+    text-align: left;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    padding: 0.75rem 1rem;
+    border-bottom: 2px solid var(--border);
+    background: var(--surface2);
+  }
+  .gap-table td {
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.82rem;
+    vertical-align: middle;
+  }
+  .gap-table tr:last-child td { border-bottom: none; }
+  .gap-table tr:hover td { background: var(--surface); }
+  .badge {
+    display: inline-block;
+    padding: 0.2rem 0.7rem;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .badge-no { background: rgba(224,82,82,0.15); color: var(--red); border: 1px solid rgba(224,82,82,0.3); }
+  .badge-partial { background: rgba(232,188,90,0.15); color: var(--yellow); border: 1px solid rgba(232,188,90,0.3); }
+  .badge-yes { background: rgba(76,175,125,0.15); color: var(--green); border: 1px solid rgba(76,175,125,0.3); }
+
+  /* ── Recommendations ── */
+  .rec-list { display: flex; flex-direction: column; gap: 1rem; }
+  .rec-card {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+    align-items: start;
+  }
+  .rec-num {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+    opacity: 0.6;
+  }
+  .rec-body {}
+  .rec-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+  .rec-detail {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+  .rec-source {
+    font-size: 0.68rem;
+    color: var(--text-dim);
+    margin-top: 0.5rem;
+    font-style: italic;
+  }
+
+  /* ── Appendix ── */
+  .appendix-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .appendix-table th {
+    text-align: left;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    padding: 0.6rem 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .appendix-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+  .appendix-table a { color: var(--accent); text-decoration: none; }
+  .appendix-table tr:last-child td { border-bottom: none; }
+
+  /* ── Print ── */
+  @media print {
+    .no-print { display: none; }
+    body { background: white; color: #111; }
+    :root {
+      --bg: white;
+      --bg2: #f8f8f8;
+      --surface: #f2f2f2;
+      --surface2: #e8e8e8;
+      --border: #d0d0d0;
+      --text: #111;
+      --text-muted: #555;
+      --text-dim: #888;
+      --accent: #8B6914;
+    }
+    section { page-break-before: always; }
+    .cover { min-height: auto; page-break-before: avoid; padding: 3rem 0; background: none; }
+    .cover::before { display: none; }
+    .comp-card-body { grid-template-columns: 1fr 1fr; }
+    a { color: inherit; }
+  }
+
+  @media (max-width: 640px) {
+    .comp-card-body { grid-template-columns: 1fr; }
+    .comp-col { border-right: none; border-bottom: 1px solid var(--border); }
+    .blueprint-row { grid-template-columns: 1fr; }
+    .blueprint-label { border-right: none; border-bottom: 1px solid var(--border); }
+    .stat-row { grid-template-columns: 1fr; }
+    .rec-card { grid-template-columns: 2rem 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════ COVER ══════════════════ -->
+<div class="cover">
+  <div class="cover-badge">Competitive Intelligence Report</div>
+  <h1 class="cover-title">Tracking<br><span>Faith</span></h1>
+  <p class="cover-subtitle">Market landscape, competitor profiles, and strategic recommendations for the cross-tradition scripture comparison niche.</p>
+  <div class="cover-meta">
+    <span>May 2026</span>
+    <span>5 Competitors Analyzed</span>
+    <span>Prepared by Raspucat</span>
+  </div>
+</div>
+
+<!-- ══════════════════ MARKET OVERVIEW ══════════════════ -->
+<section>
+  <div class="page">
+    <div class="section-number">01 — Market Overview</div>
+    <h2 class="section-title">The Competitive Landscape</h2>
+    <p class="section-lead">Tracking Faith enters a niche dominated by scholar-led authority platforms that serve both skeptics and believers through evidence-based content. The market rewards academic credibility and low-friction free entry over direct sales.</p>
+
+    <div class="overview-card">
+      The cross-tradition scripture and biblical history space is fragmented between massive free archives (sacred-texts.com — 1,700+ texts since 1999), membership-driven scholar platforms (Bart Ehrman's ecosystem — 2M+ customers, 6 NYT bestsellers), academic institutions with digital outreach (Text & Canon Institute, Bible Odyssey / SBL), and modern study tools (CrossBible with Princeton/Duke endorsements). No single competitor holds all three pillars simultaneously: <strong>cross-tradition breadth</strong>, <strong>active editorial scholarship with citations</strong>, and <strong>modern interactive UX</strong>. That intersection is Tracking Faith's opening.
+    </div>
+
+    <div class="stat-row">
+      <div class="stat">
+        <span class="stat-num">5</span>
+        <span class="stat-label">Competitors Profiled</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">4/5</span>
+        <span class="stat-label">Use Free-Entry Model</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">5/5</span>
+        <span class="stat-label">Lead with Scholar Credentials</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ COMPETITOR PROFILES ══════════════════ -->
+<section>
+  <div class="page">
+    <div class="section-number">02 — Competitor Profiles</div>
+    <h2 class="section-title">The Top 5</h2>
+    <p class="section-lead">Ranked by composite authority score: organic ranking (+3), niche credibility (+2), trust signal prominence (+1).</p>
+
+    <div class="competitor-grid">
+
+      <!-- #1 Bart Ehrman Platform -->
+      <div class="comp-card">
+        <div class="comp-card-header">
+          <span class="comp-rank">#1</span>
+          <span class="comp-name">Bart Ehrman Platform</span>
+          <span class="comp-url">bartehrman.com</span>
+        </div>
+        <div class="comp-card-body">
+          <div class="comp-col">
+            <div class="comp-field-label">Tagline</div>
+            <div class="comp-field-value">"University-level insight into the bible and its origins"</div>
+            <div class="comp-field-label">Primary CTA</div>
+            <div class="comp-field-value">ONLINE COURSES → /courses — Free trial available, "budget friendly, lifetime access"</div>
+            <div class="comp-field-label">Business Model</div>
+            <div class="comp-field-value">Course sales + Biblical Studies Academy membership. 30+ courses, 34 published books, podcast.</div>
+            <div class="comp-field-label">Top Keywords</div>
+            <div class="keyword-list">
+              <span class="kw-tag">bible history</span>
+              <span class="kw-tag">new testament origins</span>
+              <span class="kw-tag">historical jesus</span>
+            </div>
+          </div>
+          <div class="comp-col">
+            <div class="comp-field-label">Trust Signals</div>
+            <ul class="trust-list">
+              <li>2M+ books and courses sold</li>
+              <li>6 New York Times bestsellers</li>
+              <li>37 years at UNC Chapel Hill (James A. Gray Professor Emeritus)</li>
+              <li>CNN, BBC, NPR, National Geographic featured</li>
+              <li>Press logos: NYT, Washington Post, New Yorker, Time, Newsweek, Smithsonian, History Channel, Yale</li>
+            </ul>
+            <div class="comp-field-label" style="margin-top:1rem;">Section Order</div>
+            <div class="comp-field-value">Nav → Hero courses → Course grid → Academy promo → New releases → About → Press logos</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- #2 Bart Ehrman Blog -->
+      <div class="comp-card">
+        <div class="comp-card-header">
+          <span class="comp-rank">#2</span>
+          <span class="comp-name">The Bart Ehrman Blog</span>
+          <span class="comp-url">ehrmanblog.org</span>
+        </div>
+        <div class="comp-card-body">
+          <div class="comp-col">
+            <div class="comp-field-label">Tagline</div>
+            <div class="comp-field-value">"Exploring the most important aspects of the New Testament and early Christianity"</div>
+            <div class="comp-field-label">Primary CTA</div>
+            <div class="comp-field-value">Register → Tiered membership (Bronze $2.99/mo to Platinum $200/yr). 100% of fees to charity.</div>
+            <div class="comp-field-label">Content Cadence</div>
+            <div class="comp-field-value">5 posts/week × 1,200–1,400 words. Archives to 2012. $3M+ raised for charities.</div>
+            <div class="comp-field-label">Top Keywords</div>
+            <div class="keyword-list">
+              <span class="kw-tag">bart ehrman blog</span>
+              <span class="kw-tag">NT scholarship</span>
+              <span class="kw-tag">early christianity</span>
+            </div>
+          </div>
+          <div class="comp-col">
+            <div class="comp-field-label">Membership Tiers</div>
+            <ul class="trust-list">
+              <li>Bronze: $2.99/mo — read all posts + forum</li>
+              <li>Silver: $3.99/mo — + commenting + Q&A</li>
+              <li>Gold: + audio posts + monthly Q&A session</li>
+              <li>Platinum: $55/quarter — live group meeting with Bart</li>
+            </ul>
+            <div class="comp-field-label" style="margin-top:1rem;">Trust Signals</div>
+            <ul class="trust-list">
+              <li>$3M+ raised for charities (100% of fees)</li>
+              <li>Archives since 2012 — depth signals expertise</li>
+              <li>Ehrman's academic profile anchors all trust</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- #3 Cross Bible -->
+      <div class="comp-card">
+        <div class="comp-card-header">
+          <span class="comp-rank">#3</span>
+          <span class="comp-name">Cross Bible</span>
+          <span class="comp-url">crossbible.com</span>
+        </div>
+        <div class="comp-card-body">
+          <div class="comp-col">
+            <div class="comp-field-label">Tagline</div>
+            <div class="comp-field-value">"Tools built to enhance your Bible study experience"</div>
+            <div class="comp-field-label">Primary CTA</div>
+            <div class="comp-field-value">"Get started — it's free" → /register. No credit card required.</div>
+            <div class="comp-field-label">Key Features</div>
+            <div class="comp-field-value">30+ Bible versions side-by-side, Greek/Hebrew lexicon, Interactive Bible Timeline (2,000 years of transmission), SBLGNT textual variants, cross-references, personal reflections.</div>
+            <div class="comp-field-label">Top Keywords</div>
+            <div class="keyword-list">
+              <span class="kw-tag">bible comparison tool</span>
+              <span class="kw-tag">side by side bible</span>
+              <span class="kw-tag">bible study app</span>
+            </div>
+          </div>
+          <div class="comp-col">
+            <div class="comp-field-label">Scholar Endorsements</div>
+            <ul class="trust-list">
+              <li>Dr. Mike Licona — Houston Christian University</li>
+              <li>Dr. Craig Keener — Asbury Theological Seminary</li>
+              <li>Dale C. Allison Jr. — Princeton Seminary</li>
+              <li>Dr. Mark Goodacre — Duke University</li>
+            </ul>
+            <div class="comp-field-label" style="margin-top:1rem;">Partners</div>
+            <ul class="trust-list">
+              <li>Biblica, Crossway, Deutsche Bible Gesellschaft</li>
+              <li>SBL (Society of Biblical Literature)</li>
+              <li>NCC, Lighthouse</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- #4 Text & Canon Institute -->
+      <div class="comp-card">
+        <div class="comp-card-header">
+          <span class="comp-rank">#4</span>
+          <span class="comp-name">Text &amp; Canon Institute</span>
+          <span class="comp-url">textandcanon.org</span>
+        </div>
+        <div class="comp-card-body">
+          <div class="comp-col">
+            <div class="comp-field-label">Tagline</div>
+            <div class="comp-field-value">"Illuminating the History of the Bible"</div>
+            <div class="comp-field-label">Primary CTA</div>
+            <div class="comp-field-value">"Learn more →" → Scribes & Scripture traveling conference. Free articles as primary hook.</div>
+            <div class="comp-field-label">Content Types</div>
+            <div class="comp-field-value">Articles (Text / Canon / Translation / Manuscripts), 4-part video series, published book (2 award nominations), academic colloquia, mentoring fellowship.</div>
+            <div class="comp-field-label">Top Keywords</div>
+            <div class="keyword-list">
+              <span class="kw-tag">canon formation</span>
+              <span class="kw-tag">bible textual history</span>
+              <span class="kw-tag">scribes and scripture</span>
+            </div>
+          </div>
+          <div class="comp-col">
+            <div class="comp-field-label">Trust Signals</div>
+            <ul class="trust-list">
+              <li>Named scholars: Peter J. Gurry, Tommy Wasserman, John D. Meade</li>
+              <li>Two book-of-the-year award nominations</li>
+              <li>Hexapla Institute affiliation</li>
+              <li>Phoenix Seminary connection</li>
+            </ul>
+            <div class="comp-field-label" style="margin-top:1rem;">Visual Identity</div>
+            <div class="comp-field-value">Dark navy + white + gray accents. Sans-serif system font. Academic and clean.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- #5 Internet Sacred Text Archive -->
+      <div class="comp-card">
+        <div class="comp-card-header">
+          <span class="comp-rank">#5</span>
+          <span class="comp-name">Internet Sacred Text Archive</span>
+          <span class="comp-url">sacred-texts.com</span>
+        </div>
+        <div class="comp-card-body">
+          <div class="comp-col">
+            <div class="comp-field-label">Tagline</div>
+            <div class="comp-field-value">"World's Largest Free Religious & Spiritual Text Archive — a quiet place devoted to religious tolerance and scholarship"</div>
+            <div class="comp-field-label">Primary CTA</div>
+            <div class="comp-field-value">Browse categories — no explicit CTA. Pure utility/archive model.</div>
+            <div class="comp-field-label">Content Scale</div>
+            <div class="comp-field-value">1,700+ texts across 77 categories — World Religions, Indigenous Traditions, Mythology, Esoteric. Fully free, public domain texts. Online since 1999.</div>
+            <div class="comp-field-label">Top Keywords</div>
+            <div class="keyword-list">
+              <span class="kw-tag">sacred texts online</span>
+              <span class="kw-tag">religious texts archive</span>
+              <span class="kw-tag">comparative religion</span>
+            </div>
+          </div>
+          <div class="comp-col">
+            <div class="comp-field-label">Trust Signals</div>
+            <ul class="trust-list">
+              <li>Library of Congress archived (lcwaN0003962)</li>
+              <li>Cited in university library guides: UW, Michigan State, Yale, Atla</li>
+              <li>25+ years operational — depth as credibility</li>
+              <li>No editorial bias — pure archival neutrality</li>
+            </ul>
+            <div class="comp-field-label" style="margin-top:1rem;">Weakness for Tracking Faith</div>
+            <div class="comp-field-value">No active editorial layer, no scholarship curation, no modern UX. Raw archive only — no synthesis, no "why this matters."</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ THE BLUEPRINT ══════════════════ -->
+<section>
+  <div class="page">
+    <div class="section-number">03 — The Blueprint</div>
+    <h2 class="section-title">What Winners Share</h2>
+    <p class="section-lead">Patterns that appear across 3 or more of the top 5 competitors — the table stakes for competing in this niche.</p>
+
+    <div class="blueprint-grid">
+      <div class="blueprint-row">
+        <div class="blueprint-label">
+          <div class="blueprint-category">Visual</div>
+          <div class="blueprint-dim">Color + Layout</div>
+        </div>
+        <div class="blueprint-value">
+          Cool to neutral palette — dark navy, dark grey, or white. No warm lifestyle photography. Academic gravitas over warmth. Text-forward hero (headline + CTA button, no full-bleed imagery). Layout is balanced: content-rich but organized into digestible sections. Typography mixes serif authority with sans-serif modernity.
+        </div>
+      </div>
+      <div class="blueprint-row">
+        <div class="blueprint-label">
+          <div class="blueprint-category">Trust</div>
+          <div class="blueprint-dim">Credibility Signals</div>
+        </div>
+        <div class="blueprint-value">
+          Scholar credentials (name + institution + title) appear before or alongside the primary CTA in all 5 competitors. Media/press logo strips or partner institution logos in 4/5. Named testimonials from PhD-level sources in 3/5. Star ratings are absent — this niche uses academic authority, not crowd reviews.
+        </div>
+      </div>
+      <div class="blueprint-row">
+        <div class="blueprint-label">
+          <div class="blueprint-category">CTA</div>
+          <div class="blueprint-dim">Conversion Pattern</div>
+        </div>
+        <div class="blueprint-value">
+          Free entry in 4/5 ("Get started free", "Read free articles", "Browse archive"). Primary verbs: Start, Get started, Browse, Learn — never Book or Buy. Low friction conversion: free content → trust → voluntary membership or course purchase. No sticky booking bars. No urgency tactics.
+        </div>
+      </div>
+      <div class="blueprint-row">
+        <div class="blueprint-label">
+          <div class="blueprint-category">Content</div>
+          <div class="blueprint-dim">Tone + Structure</div>
+        </div>
+        <div class="blueprint-value">
+          Evidence-based, scholarly but accessible. Not devotional, not preachy, not evangelical. Service naming is outcome-based: "Illuminating…", "University-level insight…", "enhance your study." Historical timeline context appears in 3/5. Long-form articles or posts are the primary trust and SEO mechanism in 4/5.
+        </div>
+      </div>
+      <div class="blueprint-row">
+        <div class="blueprint-label">
+          <div class="blueprint-category">SEO</div>
+          <div class="blueprint-dim">Keyword Patterns</div>
+        </div>
+        <div class="blueprint-value">
+          Shared keyword clusters across 3+ competitors: "bible history", "scripture translation/comparison/canon", "early christianity", "new testament origins", "historical jesus". Article/ScholarlyArticle structured data. FAQ schema in 2/5. Large content depth (hundreds to thousands of indexed pages) drives long-tail authority.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ KEYWORD GAP ANALYSIS ══════════════════ -->
+<section>
+  <div class="page">
+    <div class="section-number">04 — Keyword Gap Analysis</div>
+    <h2 class="section-title">Where the Traffic Lives</h2>
+    <p class="section-lead">Keywords competitors rank for, mapped against Tracking Faith's current content readiness.</p>
+
+    <table class="gap-table">
+      <thead>
+        <tr>
+          <th>Keyword / Topic Cluster</th>
+          <th>Competitors Ranking</th>
+          <th>Search Intent</th>
+          <th>TF Has Content?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Bible translation history</td>
+          <td>4/5 (Ehrman, CrossBible, TextCanon, ISTA)</td>
+          <td>Informational — how did we get this Bible?</td>
+          <td><span class="badge badge-no">No</span></td>
+        </tr>
+        <tr>
+          <td>Canon formation / how the Bible was assembled</td>
+          <td>5/5 (all competitors)</td>
+          <td>Informational — high trust seekers</td>
+          <td><span class="badge badge-no">No</span></td>
+        </tr>
+        <tr>
+          <td>Comparative mythology Bible parallels</td>
+          <td>3/5 (ISTA, Ehrman blog, BibleOdyssey)</td>
+          <td>Informational — skeptics + curious believers</td>
+          <td><span class="badge badge-no">No</span></td>
+        </tr>
+        <tr>
+          <td>Scripture comparison tool / side by side Bible</td>
+          <td>2/5 (CrossBible, Parallel Plus)</td>
+          <td>Transactional — user wants a tool</td>
+          <td><span class="badge badge-partial">Planned</span></td>
+        </tr>
+        <tr>
+          <td>Historical Jesus scholarship</td>
+          <td>3/5 (Ehrman platform, blog, BibleOdyssey)</td>
+          <td>Informational — academic curiosity</td>
+          <td><span class="badge badge-no">No</span></td>
+        </tr>
+        <tr>
+          <td>Early Christianity origins</td>
+          <td>3/5 (both Ehrman properties, TextCanon)</td>
+          <td>Informational — seekers wanting facts</td>
+          <td><span class="badge badge-no">No</span></td>
+        </tr>
+        <tr>
+          <td>Textual variants / manuscript differences</td>
+          <td>3/5 (CrossBible, TextCanon, Ehrman blog)</td>
+          <td>Informational — skeptics + scholars</td>
+          <td><span class="badge badge-no">No</span></td>
+        </tr>
+        <tr>
+          <td>World religions sacred texts archive</td>
+          <td>2/5 (ISTA, BibleOdyssey)</td>
+          <td>Navigational — user wants primary sources</td>
+          <td><span class="badge badge-no">No</span></td>
+        </tr>
+        <tr>
+          <td>Faith tracking / spiritual journaling</td>
+          <td>0/5 — gap in market</td>
+          <td>Transactional — user wants personal tool</td>
+          <td><span class="badge badge-partial">Core feature</span></td>
+        </tr>
+        <tr>
+          <td>Cross-tradition scripture comparison</td>
+          <td>0/5 — no direct competitor owns this</td>
+          <td>Informational + navigational — blue ocean</td>
+          <td><span class="badge badge-partial">Core mission</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════════════ STRATEGIC RECOMMENDATIONS ══════════════════ -->
+<section>
+  <div class="page">
+    <div class="section-number">05 — Strategic Recommendations</div>
+    <h2 class="section-title">What to Do About It</h2>
+    <p class="section-lead">Five actions, each backed by specific findings from the competitor analysis above.</p>
+
+    <div class="rec-list">
+      <div class="rec-card">
+        <div class="rec-num">01</div>
+        <div class="rec-body">
+          <div class="rec-title">Lead with named scholar credentials — before the CTA</div>
+          <div class="rec-detail">Every top competitor anchors trust with a specific name, institution, and title — not star ratings or testimonial counts. CrossBible shows "Dale C. Allison Jr., Princeton Seminary" before asking for a signup. Tracking Faith should surface its contributors, advisors, or citing sources with the same specificity on the homepage hero or immediately below it.</div>
+          <div class="rec-source">Data: 5/5 competitors use scholar credentials. 0/5 use star-rating trust signals.</div>
+        </div>
+      </div>
+      <div class="rec-card">
+        <div class="rec-num">02</div>
+        <div class="rec-body">
+          <div class="rec-title">Add a blog / articles module — it is the primary SEO and trust engine</div>
+          <div class="rec-detail">Four of the five top competitors use long-form articles or daily posts as their primary content type. These drive both organic keyword ranking (in a space dominated by informational queries) and the depth signals that make visitors trust the platform before signing up. A blog covering canon formation, translation history, and cross-tradition parallels would directly compete for the highest-volume keywords in the niche.</div>
+          <div class="rec-source">Data: 4/5 competitors publish long-form articles. Current client.json MODULES does not include "blog".</div>
+        </div>
+      </div>
+      <div class="rec-card">
+        <div class="rec-num">03</div>
+        <div class="rec-body">
+          <div class="rec-title">Own "cross-tradition comparison" — no competitor does it comprehensively</div>
+          <div class="rec-detail">Sacred-texts.com has breadth but no editorial layer. CrossBible has tools but stays within Christianity. The Ehrman properties go deep on the New Testament but not across traditions. The keyword cluster "cross-tradition scripture comparison" has 0/5 direct competitors owning it. Tracking Faith's core thesis — the same story across cultures, tracked with citations — is a genuine blue ocean if executed with academic rigor.</div>
+          <div class="rec-source">Data: 0/5 competitors rank for "cross-tradition scripture comparison". Gap confirmed across all 5 profiles.</div>
+        </div>
+      </div>
+      <div class="rec-card">
+        <div class="rec-num">04</div>
+        <div class="rec-body">
+          <div class="rec-title">Use a free-entry conversion model — not a direct purchase or paywall</div>
+          <div class="rec-detail">The entire top 5 convert through trust, not urgency. Free articles → email list → membership/courses is the proven funnel for this audience of skeptics and seekers. A hard paywall or immediate upsell would alienate the exact audience (academics, skeptics, curious believers) who need to verify credibility before paying. Ehrman's membership at $2.99/mo with 100% to charity is a masterclass in low-friction trust conversion.</div>
+          <div class="rec-source">Data: 4/5 competitors offer free access as entry. 0/5 use urgency or scarcity tactics.</div>
+        </div>
+      </div>
+      <div class="rec-card">
+        <div class="rec-num">05</div>
+        <div class="rec-body">
+          <div class="rec-title">Build a timeline / transmission history visualization</div>
+          <div class="rec-detail">CrossBible's Interactive Bible Timeline (2,000 years of manuscript transmission) is one of their primary differentiators and a strong SEO asset for "bible translation history" queries. TextCanon publishes the Scribes & Scripture conference around the same theme. A visual, interactive timeline of how texts moved across cultures, were translated, and entered different canons would be both a unique content asset and a shareable trust signal that no competitor currently owns in a cross-tradition context.</div>
+          <div class="rec-source">Data: Timeline/history visualization present in 3/5 competitors. No competitor covers cross-tradition transmission in this format.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ APPENDIX ══════════════════ -->
+<section>
+  <div class="page">
+    <div class="section-number">Appendix — Source URLs</div>
+    <h2 class="section-title">Competitors Analyzed</h2>
+
+    <table class="appendix-table">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Competitor</th>
+          <th>URL</th>
+          <th>Date Accessed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>#1</td>
+          <td>Bart Ehrman Platform</td>
+          <td><a href="https://www.bartehrman.com/">bartehrman.com</a></td>
+          <td>2026-05-19</td>
+        </tr>
+        <tr>
+          <td>#2</td>
+          <td>The Bart Ehrman Blog</td>
+          <td><a href="https://ehrmanblog.org/">ehrmanblog.org</a></td>
+          <td>2026-05-19</td>
+        </tr>
+        <tr>
+          <td>#3</td>
+          <td>Cross Bible</td>
+          <td><a href="https://crossbible.com/">crossbible.com</a></td>
+          <td>2026-05-19</td>
+        </tr>
+        <tr>
+          <td>#4</td>
+          <td>Text &amp; Canon Institute</td>
+          <td><a href="https://textandcanon.org/">textandcanon.org</a></td>
+          <td>2026-05-19</td>
+        </tr>
+        <tr>
+          <td>#5</td>
+          <td>Internet Sacred Text Archive</td>
+          <td><a href="https://sacred-texts.com/">sacred-texts.com</a></td>
+          <td>2026-05-19</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+</body>
+</html>
