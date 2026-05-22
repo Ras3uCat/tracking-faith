@@ -455,10 +455,57 @@
   // ============================================================
   function initMarquee() {
     document.querySelectorAll('[data-marquee]').forEach(m => {
-      // duplicate content for seamless loop
+      if (m.dataset.marqueeReady) return; // guard against double-duplication
+      m.dataset.marqueeReady = 'true';
       const inner = m.querySelector('.marquee__row');
       if (!inner) return;
       inner.innerHTML = inner.innerHTML + inner.innerHTML;
+    });
+  }
+
+  // ============================================================
+  // (9) PARALLELS TAB — animated column crossfade on tab switch
+  // ============================================================
+  function initParallelsTab() {
+    const toolbar = document.querySelector('[data-view="parallels"] .article__toolbar');
+    if (!toolbar || toolbar.dataset.tabReady) return;
+    toolbar.dataset.tabReady = 'true';
+
+    const cols = document.querySelectorAll('[data-view="parallels"] .compare__col');
+
+    toolbar.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-tab]');
+      if (!btn) return;
+      const target = btn.getAttribute('data-tab');
+
+      toolbar.querySelectorAll('[data-tab]').forEach(b =>
+        b.classList.toggle('chip--on', b === btn));
+
+      if (!ENABLED()) {
+        // swap content immediately without animation
+        document.querySelectorAll('[data-view="parallels"] [data-compare]').forEach(s => {
+          s.hidden = s.dataset.compare !== target;
+        });
+        return;
+      }
+
+      cols.forEach(col => {
+        col.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+        col.style.opacity = '0';
+        col.style.transform = 'translateY(10px)';
+      });
+
+      setTimeout(() => {
+        document.querySelectorAll('[data-view="parallels"] [data-compare]').forEach(s => {
+          s.hidden = s.dataset.compare !== target;
+        });
+        cols.forEach((col, i) => {
+          setTimeout(() => {
+            col.style.opacity = '1';
+            col.style.transform = 'translateY(0)';
+          }, i * 60);
+        });
+      }, 220);
     });
   }
 
@@ -474,11 +521,20 @@
     initFooterReveal();
     initReveal();
     initMarquee();
+    initParallelsTab();
   }
+
+  // Safe to call on every view switch: only runs idempotent or guarded inits.
+  // Does NOT re-run particles/scramble/marquee (they use internal guards or rAF loops).
+  function reactivate() {
+    initReveal();
+    initParallelsTab();
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', bootAll);
   } else { bootAll(); }
 
-  // Expose so tweaks can rebind after view change
-  window.TF_Effects = { boot: bootAll };
+  // Expose so tweaks panel and router can trigger reactivation after view change
+  window.TF_Effects = { boot: bootAll, reactivate };
 })();

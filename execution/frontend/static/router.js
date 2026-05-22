@@ -12,9 +12,8 @@
       if (match) found = true;
     });
     if (!found) {
-      // fallback to home
-      views.forEach(v => v.hidden = v.getAttribute('data-view') !== 'home');
-      viewName = 'home';
+      views.forEach(v => v.hidden = v.getAttribute('data-view') !== 'not-found');
+      viewName = 'not-found';
     }
     // update nav
     document.querySelectorAll('.nav a[data-nav]').forEach(a => {
@@ -23,6 +22,7 @@
     // scroll to top of main
     window.scrollTo({ top: 0, behavior: 'instant' });
     document.documentElement.setAttribute('data-view', viewName);
+    if (window.TF_Effects) window.TF_Effects.reactivate();
   }
 
   function fromHash() {
@@ -85,10 +85,14 @@
     if (e.key === 'Escape') closeCite();
   });
 
-  // search button stub
-  document.getElementById('search-btn').addEventListener('click', () => {
-    alert("Search isn't wired in this prototype.\n\nIn the live site, this opens a question-answering bar: type 'what language did Jesus speak' and you land on the relevant module — with citations.");
-  });
+  // search button — disabled until search feature is built
+  const searchBtn = document.getElementById('search-btn');
+  if (searchBtn) {
+    searchBtn.disabled = true;
+    searchBtn.style.opacity = '0.4';
+    searchBtn.style.cursor = 'not-allowed';
+    searchBtn.setAttribute('title', 'Search coming soon');
+  }
 
   // expose for tweaks panel
   window.__tf = { activate, openCite };

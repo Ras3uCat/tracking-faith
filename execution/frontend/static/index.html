@@ -9,6 +9,36 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&display=swap" />
 <link rel="stylesheet" href="styles.css" />
 <link rel="stylesheet" href="styles-effects.css" />
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="assets/logo-transparent.png" />
+<!-- PWA -->
+<link rel="manifest" href="/manifest.json" />
+<!-- SEO -->
+<meta name="description" content="Trace how scripture was written, translated, and shaped across traditions. Scholarship behind every claim. For the curious — believer and skeptic alike." />
+<link rel="canonical" href="https://trackingfaith.com" />
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://trackingfaith.com" />
+<meta property="og:title" content="Tracking Faith — same story, told differently" />
+<meta property="og:description" content="Trace how scripture was written, translated, and shaped across traditions. Scholarship behind every claim. For the curious — believer and skeptic alike." />
+<meta property="og:image" content="https://trackingfaith.com/assets/og_image.png" />
+<meta property="og:site_name" content="Tracking Faith" />
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Tracking Faith — same story, told differently" />
+<meta name="twitter:description" content="Trace how scripture was written, translated, and shaped across traditions. Scholarship behind every claim. For the curious — believer and skeptic alike." />
+<meta name="twitter:image" content="https://trackingfaith.com/assets/og_image.png" />
+<!-- JSON-LD: WebSite schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://trackingfaith.com/#website",
+  "name": "Tracking Faith",
+  "url": "https://trackingfaith.com",
+  "description": "Tracing scripture, myth, and history across traditions with scholarship cited behind every claim."
+}
+</script>
 </head>
 <body>
 
@@ -100,7 +130,7 @@
 
   <!-- FEATURED MODULE -->
   <section class="featured" data-reveal>
-    <div class="featured__label"><span class="kicker">Featured&nbsp;Module · MVP</span></div>
+    <div class="featured__label"><span class="kicker">Featured&nbsp;Module</span></div>
     <div class="featured__grid">
       <div class="featured__copy">
         <h2 class="display">What language did Jesus actually speak?</h2>
@@ -369,7 +399,7 @@
 
     <nav class="crumbs"><a href="#home" data-nav="home">Home</a> <span>/</span> <a href="#home" data-nav="home">Modules</a> <span>/</span> <em>Historical Jesus</em></nav>
 
-    <header class="article__head">
+    <header class="article__head" data-reveal>
       <span class="kicker">Module · Historical Jesus</span>
       <h1 class="article__title">What language did Jesus actually speak?</h1>
       <p class="article__dek">
@@ -496,7 +526,7 @@
     </div>
 
     <!-- CITATION RAIL -->
-    <aside class="sources" aria-label="Sources">
+    <aside class="sources" data-reveal aria-label="Sources">
       <span class="kicker">Sources</span>
       <ol class="sources__list">
         <li id="cite-1"><span class="mono">1</span> Codex Sinaiticus Project. <em>The Codex Sinaiticus.</em> British Library / Leipzig University, digital ed. <span class="mono">2009</span>.</li>
@@ -525,7 +555,7 @@
   <div class="article">
     <nav class="crumbs"><a href="#home" data-nav="home">Home</a> <span>/</span> <em>Parallel Stories</em></nav>
 
-    <header class="article__head">
+    <header class="article__head" data-reveal>
       <span class="kicker">Parallel&nbsp;Stories · The Flood</span>
       <h1 class="article__title">A boat. A bird. A world rebegun.</h1>
       <p class="article__dek">
@@ -534,16 +564,16 @@
       </p>
       <div class="article__toolbar">
         <span class="toolbar__label">Compare:</span>
-        <button class="chip chip--on">Flood</button>
-        <button class="chip">Watchers / Nephilim</button>
-        <button class="chip">Virgin Birth</button>
-        <button class="chip">Dying &amp; Rising</button>
+        <button class="chip chip--on" data-tab="flood">Flood</button>
+        <button class="chip" data-tab="watchers">Watchers / Nephilim</button>
+        <button class="chip" data-tab="virgin-birth">Virgin Birth</button>
+        <button class="chip" data-tab="dying-rising">Dying &amp; Rising</button>
         <button class="chip chip--ghost">+ propose a parallel</button>
       </div>
     </header>
 
     <section class="compare">
-      <article class="compare__col">
+      <article class="compare__col" data-reveal>
         <header>
           <span class="compare__flag" data-flag="sumer">Sumerian / Akkadian</span>
           <h3>Atrahasis &amp; Gilgamesh XI</h3>
@@ -561,7 +591,7 @@
         </ul>
       </article>
 
-      <article class="compare__col">
+      <article class="compare__col" data-reveal data-reveal-delay="1">
         <header>
           <span class="compare__flag" data-flag="hebrew">Hebrew Bible</span>
           <h3>Genesis 6–9</h3>
@@ -579,7 +609,7 @@
         </ul>
       </article>
 
-      <article class="compare__col">
+      <article class="compare__col" data-reveal data-reveal-delay="2">
         <header>
           <span class="compare__flag" data-flag="greek">Greek</span>
           <h3>Ovid, <em>Metamorphoses</em> I</h3>
@@ -597,7 +627,7 @@
         </ul>
       </article>
 
-      <article class="compare__col">
+      <article class="compare__col" data-reveal data-reveal-delay="3">
         <header>
           <span class="compare__flag" data-flag="vedic">Sanskrit / Vedic</span>
           <h3>Śatapatha Brāhmaṇa I.8</h3>
@@ -616,7 +646,7 @@
       </article>
     </section>
 
-    <section class="commentary">
+    <section class="commentary" data-reveal>
       <span class="kicker">Editorial commentary</span>
       <p>
         The Mesopotamian and Hebrew accounts are textually related — most scholars accept that
@@ -657,7 +687,7 @@
   <div class="article">
     <nav class="crumbs"><a href="#home" data-nav="home">Home</a> <span>/</span> <em>Canon Formation</em></nav>
 
-    <header class="article__head">
+    <header class="article__head" data-reveal>
       <span class="kicker">Canon · the political &amp; human story</span>
       <h1 class="article__title">How the Bible came to be the Bible.</h1>
       <p class="article__dek">
@@ -670,7 +700,7 @@
     <section class="timeline">
       <div class="timeline__rail"></div>
 
-      <article class="tl">
+      <article class="tl" data-reveal>
         <div class="tl__date"><span class="mono">c. 140</span><span class="tl__era">CE</span></div>
         <div class="tl__card">
           <h3>Marcion proposes the first canon — and is rejected</h3>
@@ -679,7 +709,7 @@
         </div>
       </article>
 
-      <article class="tl">
+      <article class="tl" data-reveal data-reveal-delay="1">
         <div class="tl__date"><span class="mono">325</span><span class="tl__era">CE</span></div>
         <div class="tl__card">
           <h3>The Council of Nicaea — not about the canon</h3>
@@ -688,7 +718,7 @@
         </div>
       </article>
 
-      <article class="tl">
+      <article class="tl" data-reveal data-reveal-delay="2">
         <div class="tl__date"><span class="mono">367</span><span class="tl__era">CE</span></div>
         <div class="tl__card">
           <h3>Athanasius lists the 27 — for the first time</h3>
@@ -697,7 +727,7 @@
         </div>
       </article>
 
-      <article class="tl">
+      <article class="tl" data-reveal data-reveal-delay="3">
         <div class="tl__date"><span class="mono">393–397</span><span class="tl__era">CE</span></div>
         <div class="tl__card">
           <h3>Hippo &amp; Carthage ratify the western canon</h3>
@@ -706,7 +736,7 @@
         </div>
       </article>
 
-      <article class="tl">
+      <article class="tl" data-reveal data-reveal-delay="4">
         <div class="tl__date"><span class="mono">1546</span><span class="tl__era">CE</span></div>
         <div class="tl__card">
           <h3>Trent fixes the Catholic canon; Luther reshuffles the Protestant one</h3>
@@ -715,7 +745,7 @@
         </div>
       </article>
 
-      <article class="tl">
+      <article class="tl" data-reveal data-reveal-delay="5">
         <div class="tl__date"><span class="mono">1611</span><span class="tl__era">CE</span></div>
         <div class="tl__card">
           <h3>King James authorizes a translation — and a politics</h3>
@@ -742,7 +772,7 @@
 <section class="view" data-view="excluded" data-screen-label="05 Excluded Texts" hidden>
   <div class="article article--narrow">
     <nav class="crumbs"><a href="#home" data-nav="home">Home</a> <span>/</span> <em>Excluded Texts</em></nav>
-    <header class="article__head">
+    <header class="article__head" data-reveal>
       <span class="kicker">Excluded&nbsp;Texts · library</span>
       <h1 class="article__title">Books the council didn't choose.</h1>
       <p class="article__dek">
@@ -753,13 +783,25 @@
     </header>
 
     <ul class="lib">
-      <li><span class="mono">№ 01</span><h4>The Gospel of Thomas</h4><p>114 sayings, no narrative, found at Nag Hammadi in 1945. About a third overlap with the synoptic gospels. Probably second-century in its present form; some sayings may predate the canonical gospels.</p></li>
-      <li><span class="mono">№ 02</span><h4>1 Enoch</h4><p>Pre-Christian Jewish apocalypse. The source for the Watchers / Nephilim mythos. Quoted in Jude. Canonical in the Ethiopian Orthodox Bible to this day.</p></li>
-      <li><span class="mono">№ 03</span><h4>The Gospel of Mary</h4><p>Fragmentary. Mary Magdalene reports a vision Jesus gave her privately. Peter doubts her; Levi defends her. Composed in the early-to-mid second century.</p></li>
-      <li><span class="mono">№ 04</span><h4>The Gospel of Judas</h4><p>Recovered 1970s, published 2006. Recasts Judas as the disciple who understood. Coptic translation of a Greek original, c. 150 CE. Sethian Gnostic.</p></li>
-      <li><span class="mono">№ 05</span><h4>The Shepherd of Hermas</h4><p>Popular early-Christian visionary text, widely treated as scripture in the second and third centuries. Listed by Athanasius (367) as <em>useful, not canonical</em>.</p></li>
-      <li><span class="mono">№ 06</span><h4>The Pistis Sophia</h4><p>Third- or fourth-century Coptic text. Long dialogues between the risen Jesus and his disciples, especially Mary. Cosmological, esoteric, highly disputed.</p></li>
+      <li data-reveal><span class="mono">№ 01</span><h4>The Gospel of Thomas</h4><p>114 sayings, no narrative, found at Nag Hammadi in 1945. About a third overlap with the synoptic gospels. Probably second-century in its present form; some sayings may predate the canonical gospels.</p></li>
+      <li data-reveal data-reveal-delay="1"><span class="mono">№ 02</span><h4>1 Enoch</h4><p>Pre-Christian Jewish apocalypse. The source for the Watchers / Nephilim mythos. Quoted in Jude. Canonical in the Ethiopian Orthodox Bible to this day.</p></li>
+      <li data-reveal data-reveal-delay="2"><span class="mono">№ 03</span><h4>The Gospel of Mary</h4><p>Fragmentary. Mary Magdalene reports a vision Jesus gave her privately. Peter doubts her; Levi defends her. Composed in the early-to-mid second century.</p></li>
+      <li data-reveal data-reveal-delay="3"><span class="mono">№ 04</span><h4>The Gospel of Judas</h4><p>Recovered 1970s, published 2006. Recasts Judas as the disciple who understood. Coptic translation of a Greek original, c. 150 CE. Sethian Gnostic.</p></li>
+      <li data-reveal data-reveal-delay="4"><span class="mono">№ 05</span><h4>The Shepherd of Hermas</h4><p>Popular early-Christian visionary text, widely treated as scripture in the second and third centuries. Listed by Athanasius (367) as <em>useful, not canonical</em>.</p></li>
+      <li data-reveal data-reveal-delay="5"><span class="mono">№ 06</span><h4>The Pistis Sophia</h4><p>Third- or fourth-century Coptic text. Long dialogues between the risen Jesus and his disciples, especially Mary. Cosmological, esoteric, highly disputed.</p></li>
     </ul>
+  </div>
+</section>
+
+<!-- ============================================================
+     NOT FOUND VIEW
+     ============================================================ -->
+<section class="view" data-view="not-found" data-screen-label="404" hidden>
+  <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;gap:1.5rem;text-align:center;padding:4rem 2rem;">
+    <span class="kicker">404</span>
+    <h2 class="display" style="max-width:28ch;">This page doesn't exist.</h2>
+    <p class="lede" style="max-width:48ch;opacity:.7;">The module you're looking for may have moved, or you followed a broken link.</p>
+    <a href="#home" data-nav="home" class="btn btn--ghost">← Back to home</a>
   </div>
 </section>
 
@@ -811,19 +853,19 @@
     <div>
       <span class="kicker">Editorial</span>
       <ul class="foot__list">
-        <li><a href="#">Citation policy</a></li>
-        <li><a href="#">Editorial standards</a></li>
-        <li><a href="#">Submit a parallel</a></li>
-        <li><a href="#">Contact the editors</a></li>
+        <li><a href="javascript:void(0)" data-drawer="citations-manifesto">Citation policy</a></li>
+        <li><a href="#contact" data-nav="contact">Submit a parallel</a></li>
+        <li><a href="#contact" data-nav="contact">Contact the editors</a></li>
       </ul>
     </div>
     <div>
       <span class="kicker">Stay close</span>
       <p class="foot__small">A weekly letter. New modules, new parallels, careful reading.</p>
-      <form class="foot__sub" onsubmit="return false">
-        <input type="email" placeholder="you@somewhere" />
+      <form class="foot__sub" id="newsletter-form">
+        <input type="email" id="newsletter-email" placeholder="you@somewhere" />
         <button>Subscribe</button>
       </form>
+      <p id="newsletter-msg" hidden></p>
     </div>
   </div>
   <div class="foot__bar">
@@ -845,7 +887,7 @@
     <div class="drawer__body" id="drawer-body"></div>
     <footer class="drawer__foot">
       <span class="mono">Every claim cites its source.</span>
-      <a href="#" data-drawer="citations-manifesto">Read our citation policy →</a>
+      <a href="javascript:void(0)" data-drawer="citations-manifesto">Read our citation policy →</a>
     </footer>
   </div>
   <div class="drawer__scrim" id="drawer-scrim"></div>
@@ -880,13 +922,13 @@
 
 <!-- TWEAK DEFAULTS -->
 <script>
-window.TF_DEFAULTS = /*EDITMODE-BEGIN*/{
+window.TF_DEFAULTS = {
   "palette": "ink",
   "density": "comfortable",
   "featured": "home",
   "showOrnaments": true,
   "effects": true
-}/*EDITMODE-END*/;
+};
 window.TF_EFFECTS = window.TF_DEFAULTS.effects !== false;
 </script>
 
@@ -897,6 +939,35 @@ window.TF_EFFECTS = window.TF_DEFAULTS.effects !== false;
     'https://htrzikrcpmsyyxigmyfv.supabase.co',
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh0cnppa3JjcG1zeXl4aWdteWZ2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkyMjkwOTMsImV4cCI6MjA5NDgwNTA5M30.KikKRHpjcgrv3ML9L00QWqSRd9A_lEdfxHCB4PoGGTY'
   );
+</script>
+
+<script>
+  document.getElementById('newsletter-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const emailInput = document.getElementById('newsletter-email');
+    const msg        = document.getElementById('newsletter-msg');
+    const btn        = this.querySelector('button');
+    const email      = emailInput.value.trim();
+    if (!email) return;
+    btn.disabled    = true;
+    btn.textContent = 'Subscribing…';
+    msg.hidden      = true;
+    const { error } = await _sb.from('newsletter_subscribers').insert({ email });
+    btn.disabled    = false;
+    btn.textContent = 'Subscribe';
+    if (!error) {
+      emailInput.value = '';
+      msg.textContent  = 'You’re subscribed. Watch your inbox.';
+      msg.className    = 'newsletter-msg--ok';
+    } else if (error.code === '23505') {
+      msg.textContent = 'You’re already subscribed.';
+      msg.className   = 'newsletter-msg--info';
+    } else {
+      msg.textContent = 'Something went wrong. Please try again.';
+      msg.className   = 'newsletter-msg--err';
+    }
+    msg.hidden = false;
+  });
 </script>
 
 <script src="router.js"></script>

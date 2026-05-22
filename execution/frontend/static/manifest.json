@@ -1,0 +1,17 @@
+{
+  "name": "Tracking Faith",
+  "short_name": "Tracking Faith",
+  "description": "Tracing scripture, myth, and history across traditions.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0D1B2A",
+  "theme_color": "#B8965A",
+  "icons": [
+    {
+      "src": "assets/logo-transparent.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

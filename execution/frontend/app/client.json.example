@@ -31,9 +31,9 @@
   "MODULES": "home,contact,auth,booking,newsletter,crm",
   "_COMMENT_MODULES": "Optional modules: booking,shop,blog,gallery,testimonials,faq,subscriptions,referrals,events,courses,menu,location",
 
-  "SUPABASE_URL":              "https://your-project-ref.supabase.co",
-  "SUPABASE_ANON_KEY":         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-  "SUPABASE_SERVICE_ROLE_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "SUPABASE_URL":      "https://your-project-ref.supabase.co",
+  "SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "_COMMENT_SECRETS": "SUPABASE_SERVICE_ROLE_KEY, RESEND_KEY, and ANTHROPIC_API_KEY are edge-function-only secrets. Set via: supabase secrets set KEY=value. Never add them here — client.json is compiled into the web bundle.",
 
   "STRIPE_PK":         "pk_test_...",
   "STRIPE_SECRET_KEY": "sk_test_...",
@@ -42,7 +42,6 @@
   "STRIPE_SHOP_WEBHOOK_SECRET":         "",
   "STRIPE_EVENTS_WEBHOOK_SECRET":       "",
   "STRIPE_SUBSCRIPTION_WEBHOOK_SECRET": "",
-  "RESEND_KEY": "re_...",
   "GEMINI_API_KEY": "FILL_IN",
   "UNSPLASH_ACCESS_KEY": "FILL_IN",
   "PEXELS_API_KEY": "FILL_IN",
