@@ -1,4 +1,4 @@
 User-agent: *
-Disallow: /admin
+Allow: /
 
-Sitemap: FILL_IN/sitemap.xml
+Sitemap: https://trackingfaith.com/sitemap.xml

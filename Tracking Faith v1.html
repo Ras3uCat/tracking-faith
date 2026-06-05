@@ -1,0 +1,749 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Tracking Faith — same story, told differently</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+<link rel="stylesheet" href="styles-v1.css" />
+</head>
+<body>
+
+<!-- ============================================================
+     TOP CHROME
+     ============================================================ -->
+<header class="topbar" id="topbar">
+  <a class="brand" href="#home" data-nav="home" aria-label="Tracking Faith home">
+    <img src="assets/logo-transparent.png" alt="" class="brand__mark" />
+    <span class="brand__wordmark">
+      <span class="brand__title">Tracking Faith</span>
+      <span class="brand__sub">same story, told differently</span>
+    </span>
+  </a>
+
+  <nav class="nav" aria-label="primary">
+    <a href="#home"      data-nav="home">Home</a>
+    <a href="#jesus"     data-nav="jesus">Historical&nbsp;Jesus</a>
+    <a href="#parallels" data-nav="parallels">Parallel&nbsp;Stories</a>
+    <a href="#canon"     data-nav="canon">Canon&nbsp;Formation</a>
+    <a href="#excluded"  data-nav="excluded" class="nav__muted">Excluded&nbsp;Texts</a>
+  </nav>
+
+  <div class="topbar__tools">
+    <button class="iconbtn" id="search-btn" aria-label="Search">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg>
+      <span class="iconbtn__hint">Ask a question…</span>
+      <kbd>⌘K</kbd>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============================================================
+     HOME VIEW
+     ============================================================ -->
+<section class="view" data-view="home" data-screen-label="01 Home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__rule"><span>Vol. I · No. 1</span><span>Reading scripture across traditions</span><span>Established 2026</span></div>
+
+    <h1 class="hero__title">
+      Same&nbsp;story.<br/>
+      <em>Told differently.</em>
+    </h1>
+
+    <p class="hero__lede">
+      A flood drowns the world in Sumer, in Israel, in Greece, in the Andes. A god dies
+      and rises in Egypt, in Phrygia, in Galilee. A council of bishops meets in
+      <abbr title="Nicaea, AD 325">Nicaea</abbr> and decides which gospels you will read for the next seventeen
+      centuries. <em>Tracking&nbsp;Faith</em> reads these texts side&#8209;by&#8209;side — exploratory,
+      not adversarial, and sourced down to the footnote.
+    </p>
+
+    <div class="hero__meta">
+      <a class="cta" href="#jesus" data-nav="jesus">
+        <span class="cta__label">Begin with the Historical Jesus</span>
+        <span class="cta__arrow">→</span>
+      </a>
+      <span class="hero__cred">
+        <em>Every claim cites its source.</em>
+        <a href="#" data-drawer="citations-manifesto">Read the citation policy ↗</a>
+      </span>
+    </div>
+  </section>
+
+  <hr class="rule rule--ornament" />
+
+  <!-- FEATURED MODULE -->
+  <section class="featured">
+    <div class="featured__label"><span class="kicker">Featured&nbsp;Module · MVP</span></div>
+    <div class="featured__grid">
+      <div class="featured__copy">
+        <h2 class="display">What language did Jesus actually speak?</h2>
+        <p class="featured__dek">
+          He was born in Galilee, taught in synagogues, and was crucified by Roman authority
+          using a Latin titulus. The gospels we read were written in Greek. Behind all of it —
+          beneath the translations, beneath the councils — a man spoke Aramaic to villagers.
+          What we can recover of that voice is the project of this module.
+        </p>
+        <ul class="bulletline">
+          <li><span class="bulletline__num">01</span> Languages of first-century Palestine</li>
+          <li><span class="bulletline__num">02</span> Aramaic sayings preserved in Greek <em>(talitha&nbsp;kum, abba, eli&nbsp;eli&nbsp;lema)</em></li>
+          <li><span class="bulletline__num">03</span> What translation could carry — and what it lost</li>
+          <li><span class="bulletline__num">04</span> Teachings: original sayings vs. later attributions</li>
+        </ul>
+        <a class="btn btn--primary" href="#jesus" data-nav="jesus">Enter the module →</a>
+      </div>
+      <aside class="featured__aside">
+        <figure class="plate">
+          <div class="plate__art" aria-hidden="true">
+            <div class="plate__stripes"></div>
+            <div class="plate__caption">plate i ·  manuscript fragment</div>
+          </div>
+          <figcaption>
+            <span class="mono">FIG. 1</span>
+            A fragment of the Greek New Testament, Codex Sinaiticus, c. AD 350 — among the
+            earliest surviving complete copies. <a href="#" data-cite="cite-1">[1]</a>
+          </figcaption>
+        </figure>
+        <div class="aside__stats">
+          <div><span class="mono">7</span> sections</div>
+          <div><span class="mono">23</span> primary sources</div>
+          <div><span class="mono">41</span> footnotes</div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- PARALLEL STORIES GRID -->
+  <section class="parallels">
+    <div class="section-head">
+      <span class="kicker">Parallel&nbsp;Stories</span>
+      <h2 class="display">The same myth, in four traditions</h2>
+      <p class="dek">
+        Some stories appear so often, in cultures with no contact, that they invite the
+        question. We don't answer it for you. We lay the passages side by side and cite
+        the scholarship.
+      </p>
+    </div>
+
+    <ol class="cards">
+      <li class="card">
+        <div class="card__chrome"><span class="mono">№ 01</span><span class="card__pill">Flood</span></div>
+        <h3>The waters that ended the world</h3>
+        <p>Atrahasis in Babylon. Utnapishtim in Uruk. Noah in Israel. Deucalion in Greece. Manu in the Vedas. A flood survivor saves life on a vessel and lets out a bird.</p>
+        <ul class="card__sources">
+          <li>Atra-Hasis <span class="mono">c. 1700 BCE</span></li>
+          <li>Genesis 6–9 <span class="mono">c. 600 BCE</span></li>
+          <li>Metamorphoses I <span class="mono">8 CE</span></li>
+          <li>Śatapatha Brāhmaṇa <span class="mono">c. 700 BCE</span></li>
+        </ul>
+        <a class="card__link" href="#parallels" data-nav="parallels">Compare passages →</a>
+      </li>
+
+      <li class="card">
+        <div class="card__chrome"><span class="mono">№ 02</span><span class="card__pill">Watchers · Nephilim</span></div>
+        <h3>Sons of heaven, daughters of men</h3>
+        <p>The Book of Enoch names two hundred Watchers who descend, marry human women, and teach forbidden arts. Genesis 6 compresses the same scene into four verses. Sumerian Anunnaki sit nearby.</p>
+        <ul class="card__sources">
+          <li>1 Enoch 6–11 <span class="mono">c. 300 BCE</span></li>
+          <li>Genesis 6:1–4 <span class="mono">c. 600 BCE</span></li>
+          <li>Sumerian King List <span class="mono">c. 2100 BCE</span></li>
+          <li>Jubilees 5 <span class="mono">c. 150 BCE</span></li>
+        </ul>
+        <a class="card__link" href="#parallels" data-nav="parallels">Compare passages →</a>
+      </li>
+
+      <li class="card">
+        <div class="card__chrome"><span class="mono">№ 03</span><span class="card__pill">Virgin Birth</span></div>
+        <h3>The child without a father</h3>
+        <p>Horus born of Isis. Mithras from rock. Dionysus from Semele and Zeus. Krishna's mother conceives by divine will. The motif is older than the gospel that crowned it.</p>
+        <ul class="card__sources">
+          <li>Pyramid Texts (Horus) <span class="mono">c. 2400 BCE</span></li>
+          <li>Bhāgavata Purāṇa <span class="mono">c. 800 CE</span></li>
+          <li>Matthew 1:18–25 <span class="mono">c. 80 CE</span></li>
+          <li>Luke 1:26–38 <span class="mono">c. 85 CE</span></li>
+        </ul>
+        <a class="card__link" href="#parallels" data-nav="parallels">Compare passages →</a>
+      </li>
+
+      <li class="card">
+        <div class="card__chrome"><span class="mono">№ 04</span><span class="card__pill">Dying &amp; Rising</span></div>
+        <h3>The god who returns from the dead</h3>
+        <p>Osiris dismembered and reassembled. Tammuz mourned by the women of Jerusalem. Attis under the pine. The Galilean rabbi on the third day. Frazer's old thesis, read carefully.</p>
+        <ul class="card__sources">
+          <li>Pyramid Texts (Osiris) <span class="mono">c. 2400 BCE</span></li>
+          <li>Ezekiel 8:14 (Tammuz) <span class="mono">c. 590 BCE</span></li>
+          <li>1 Corinthians 15 <span class="mono">c. 55 CE</span></li>
+          <li>Frazer, <em>Golden Bough</em> <span class="mono">1890</span></li>
+        </ul>
+        <a class="card__link" href="#parallels" data-nav="parallels">Compare passages →</a>
+      </li>
+    </ol>
+  </section>
+
+  <hr class="rule rule--ornament" />
+
+  <!-- CANON TEASER -->
+  <section class="canon-teaser">
+    <div class="canon-teaser__grid">
+      <div class="canon-teaser__copy">
+        <span class="kicker">Canon&nbsp;Formation</span>
+        <h2 class="display">Who decided which gospels you'd read?</h2>
+        <p>
+          The Council of Nicaea is often imagined as the moment the Bible was assembled.
+          In fact the canon was set in fits — by Marcion (excluded), by Athanasius (whose
+          AD 367 letter is the first list that matches modern New Testaments), by Trent
+          (1546), and by Luther (who relegated some books to the back). It was political.
+          It was textual. It was human.
+        </p>
+        <a class="btn btn--ghost" href="#canon" data-nav="canon">Open the timeline →</a>
+      </div>
+      <ul class="canon-teaser__timeline">
+        <li><span class="mono">325</span> Nicaea — creed, not canon</li>
+        <li><span class="mono">367</span> Athanasius lists 27 NT books</li>
+        <li><span class="mono">393</span> Council of Hippo ratifies</li>
+        <li><span class="mono">1546</span> Trent fixes Catholic canon</li>
+        <li><span class="mono">1611</span> King James authorized</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- CITATION MANIFESTO -->
+  <section class="manifesto">
+    <span class="kicker">Editorial&nbsp;policy</span>
+    <p class="manifesto__body">
+      <span class="dropcap">E</span>very factual claim on this site links to a primary source or a peer-reviewed
+      study. Where scholars disagree, we name them and quote both sides. Where a tradition
+      is sacred to a community, we treat it that way. We are spiritually curious,
+      institutionally agnostic, and editorially strict — <em>here is the full picture, here are the receipts.</em>
+    </p>
+    <div class="manifesto__sig">— the editors</div>
+  </section>
+
+</section>
+
+<!-- ============================================================
+     HISTORICAL JESUS MODULE
+     ============================================================ -->
+<section class="view" data-view="jesus" data-screen-label="02 Historical Jesus" hidden>
+
+  <article class="article">
+
+    <nav class="crumbs"><a href="#home" data-nav="home">Home</a> <span>/</span> <a href="#home" data-nav="home">Modules</a> <span>/</span> <em>Historical Jesus</em></nav>
+
+    <header class="article__head">
+      <span class="kicker">Module · Historical Jesus</span>
+      <h1 class="article__title">What language did Jesus actually speak?</h1>
+      <p class="article__dek">
+        The gospels are in Greek. The world he walked in was not. Reading him in
+        translation, two thousand years later, means reckoning with what every translation does.
+      </p>
+      <div class="article__byline">
+        <span><em>Editorial</em> · last reviewed <span class="mono">14 MAY 2026</span></span>
+        <span><span class="mono">·</span> 7 sections</span>
+        <span><span class="mono">·</span> 23 sources</span>
+        <span><span class="mono">·</span> est. 14 min</span>
+      </div>
+    </header>
+
+    <div class="article__body">
+
+      <section class="prose">
+        <h2><span class="mono">§ 1</span> The languages of first-century Galilee</h2>
+        <p>
+          <span class="dropcap">F</span>irst-century Palestine was multilingual. The everyday tongue of Jewish villagers
+          in Galilee and Judea was <strong>Aramaic</strong> — a Semitic language related to Hebrew, carried home
+          from Babylon after the exile and spoken on the street for the next thousand years.<a href="#" data-cite="cite-2">[2]</a>
+          Hebrew was the language of the synagogue and the scroll, still spoken in scholarly settings.
+          Greek was the lingua franca of the eastern Mediterranean — the language of commerce, of
+          the cities of the Decapolis, and of the New Testament documents themselves.<a href="#" data-cite="cite-3">[3]</a>
+          Latin was the language of the occupying army and of the inscription Pilate ordered nailed
+          above the cross.<a href="#" data-cite="cite-4">[4]</a>
+        </p>
+        <p>
+          Jesus almost certainly spoke Aramaic as his mother tongue. He likely read Hebrew (Luke 4
+          places him reading from a scroll of Isaiah). He may have known enough Greek to converse
+          with a Roman centurion or a Syro-Phoenician woman. There is no good evidence he wrote
+          anything down.
+        </p>
+      </section>
+
+      <section class="prose">
+        <h2><span class="mono">§ 2</span> Aramaic words preserved in Greek manuscripts</h2>
+        <p>
+          The strongest evidence for the Aramaic substratum is the gospels themselves. The Greek
+          text repeatedly stops to transliterate his words — sometimes followed by translation,
+          sometimes not. These are the moments where the page lets you hear him.
+        </p>
+
+        <table class="aramaic">
+          <thead>
+            <tr><th>Aramaic</th><th>Transliteration</th><th>Translation</th><th>Citation</th></tr>
+          </thead>
+          <tbody>
+            <tr><td lang="arc">ܛܠܝܬܐ ܩܘܡܝ</td><td><em>talitha koum</em></td><td>"Little girl, get up."</td><td><a href="#" data-cite="cite-5">Mark 5:41</a></td></tr>
+            <tr><td lang="arc">ܐܦܬܚ</td><td><em>ephphatha</em></td><td>"Be opened."</td><td><a href="#" data-cite="cite-5">Mark 7:34</a></td></tr>
+            <tr><td lang="arc">ܐܒܐ</td><td><em>abba</em></td><td>"Father" — intimate, familial.</td><td><a href="#" data-cite="cite-5">Mark 14:36</a></td></tr>
+            <tr><td lang="arc">ܐܠܗܝ ܐܠܗܝ ܠܡܐ ܫܒܩܬܢܝ</td><td><em>eloi eloi lema sabachthani</em></td><td>"My God, my God, why have you forsaken me?"</td><td><a href="#" data-cite="cite-5">Mark 15:34</a></td></tr>
+            <tr><td lang="arc">ܡܪܢ ܐܬܐ</td><td><em>maranatha</em></td><td>"Our Lord, come."</td><td><a href="#" data-cite="cite-5">1 Cor 16:22</a></td></tr>
+          </tbody>
+        </table>
+
+        <p class="prose__note">
+          The presence of these words — left untranslated in a Greek narrative — is the kind of
+          textual fingerprint that historians take seriously. Authors don't usually preserve a
+          foreign phrase unless its sound matters. <a href="#" data-cite="cite-6">[6]</a>
+        </p>
+      </section>
+
+      <section class="prose prose--pull">
+        <blockquote class="pull">
+          <p>
+            "<em>Abba</em> is not a theological title. It is what a child says to a parent at the
+            dinner table. To translate it as <em>Father</em> is correct; to translate it as
+            <em>Dad</em> may be closer."
+          </p>
+          <footer>— Joachim Jeremias, <cite>The Prayers of Jesus</cite> (1967) <a href="#" data-cite="cite-7">[7]</a></footer>
+        </blockquote>
+      </section>
+
+      <section class="prose">
+        <h2><span class="mono">§ 3</span> What Greek translation carried — and lost</h2>
+        <p>
+          When a saying moves from Aramaic into Greek, three things tend to happen. Wordplay
+          collapses. Idiom becomes literal or disappears. And theological vocabulary, sharpened
+          by later debate, gets retrofitted onto plainer speech.<a href="#" data-cite="cite-8">[8]</a>
+        </p>
+        <p>
+          The Aramaic <em>gamla</em> meant both <strong>camel</strong> and <strong>rope</strong>. The famous
+          saying about a camel passing through the eye of a needle becomes, with the other vowel
+          set, a rope through the eye of a needle — a difficult image, but not an absurd one.
+          Scholars are split on which the original was.<a href="#" data-cite="cite-9">[9]</a>
+        </p>
+        <p>
+          The Aramaic <em>bar nasha</em> — "<strong>son of man</strong>" — is, in everyday speech, simply
+          <em>a person, someone, oneself</em>. In Greek it becomes a fixed title, capitalized in
+          modern translations, freighted with apocalyptic meaning from Daniel 7. The same two
+          words. A different weight.<a href="#" data-cite="cite-10">[10]</a>
+        </p>
+      </section>
+
+      <section class="prose">
+        <h2><span class="mono">§ 4</span> What he said, vs. what was attributed to him</h2>
+        <p>
+          New Testament scholarship since the nineteenth century has tried to separate the
+          earliest layer — sayings that likely go back to Jesus himself — from material added by
+          the gospel writers and their communities. The Jesus Seminar's color-coded gospel is one
+          well-known attempt; the criteria of dissimilarity, multiple attestation, and embarrassment
+          are the standard tools.<a href="#" data-cite="cite-11">[11]</a>
+        </p>
+        <p>
+          The consensus picture is narrower than the church's. Most scholars give high confidence
+          to: the parables, the beatitudes in something like their Lukan form, the table-fellowship
+          with outsiders, the Aramaic <em>abba</em> address to God, and a baptism by John. Confidence
+          drops sharply for the long discourses in John, the infancy narratives, and most
+          self-referential titles.<a href="#" data-cite="cite-12">[12]</a>
+        </p>
+      </section>
+
+      <aside class="related">
+        <span class="kicker">Related modules</span>
+        <ul>
+          <li><a href="#parallels" data-nav="parallels">→ How the resurrection compares to older dying-god myths</a></li>
+          <li><a href="#canon" data-nav="canon">→ Which gospels made it into the canon, and which didn't</a></li>
+          <li><a href="#excluded" data-nav="excluded">→ The Gospel of Thomas: a different Jesus, in his own words</a></li>
+        </ul>
+      </aside>
+
+    </div>
+
+    <!-- CITATION RAIL -->
+    <aside class="sources" aria-label="Sources">
+      <span class="kicker">Sources</span>
+      <ol class="sources__list">
+        <li id="cite-1"><span class="mono">1</span> Codex Sinaiticus Project. <em>The Codex Sinaiticus.</em> British Library / Leipzig University, digital ed. <span class="mono">2009</span>.</li>
+        <li id="cite-2"><span class="mono">2</span> Fitzmyer, Joseph A. <em>The Aramaic Language and the Study of the New Testament.</em> JBL 99 (1980), 5–21.</li>
+        <li id="cite-3"><span class="mono">3</span> Porter, Stanley E. <em>The Criteria for Authenticity in Historical-Jesus Research.</em> T&amp;T Clark, 2000.</li>
+        <li id="cite-4"><span class="mono">4</span> John 19:20; cf. Tacitus, <em>Annals</em> XV.44.</li>
+        <li id="cite-5"><span class="mono">5</span> Nestle-Aland 28th edition, <em>Novum Testamentum Graece.</em> Deutsche Bibelgesellschaft, 2012.</li>
+        <li id="cite-6"><span class="mono">6</span> Casey, Maurice. <em>Aramaic Sources of Mark's Gospel.</em> SNTSMS 102, Cambridge, 1998.</li>
+        <li id="cite-7"><span class="mono">7</span> Jeremias, Joachim. <em>The Prayers of Jesus.</em> SBT 6, SCM Press, 1967, pp. 11–65.</li>
+        <li id="cite-8"><span class="mono">8</span> Black, Matthew. <em>An Aramaic Approach to the Gospels and Acts.</em> 3rd ed., Hendrickson, 1998.</li>
+        <li id="cite-9"><span class="mono">9</span> Funk, Robert W., et al. <em>The Five Gospels.</em> Polebridge, 1993, pp. 96, 234.</li>
+        <li id="cite-10"><span class="mono">10</span> Vermes, Géza. <em>Jesus the Jew.</em> Collins, 1973, ch. 7.</li>
+        <li id="cite-11"><span class="mono">11</span> Theissen &amp; Winter, <em>The Quest for the Plausible Jesus.</em> WJK, 2002.</li>
+        <li id="cite-12"><span class="mono">12</span> Ehrman, Bart D. <em>Jesus: Apocalyptic Prophet of the New Millennium.</em> OUP, 1999.</li>
+      </ol>
+    </aside>
+
+  </article>
+</section>
+
+
+<!-- ============================================================
+     PARALLEL STORIES VIEW
+     ============================================================ -->
+<section class="view" data-view="parallels" data-screen-label="03 Parallel Stories" hidden>
+  <div class="article">
+    <nav class="crumbs"><a href="#home" data-nav="home">Home</a> <span>/</span> <em>Parallel Stories</em></nav>
+
+    <header class="article__head">
+      <span class="kicker">Parallel&nbsp;Stories · The Flood</span>
+      <h1 class="article__title">A boat. A bird. A world rebegun.</h1>
+      <p class="article__dek">
+        Four passages describing the same event, written across two millennia and four
+        languages, by communities that mostly did not meet. Read them side by side.
+      </p>
+      <div class="article__toolbar">
+        <span class="toolbar__label">Compare:</span>
+        <button class="chip chip--on">Flood</button>
+        <button class="chip">Watchers / Nephilim</button>
+        <button class="chip">Virgin Birth</button>
+        <button class="chip">Dying &amp; Rising</button>
+        <button class="chip chip--ghost">+ propose a parallel</button>
+      </div>
+    </header>
+
+    <section class="compare">
+      <article class="compare__col">
+        <header>
+          <span class="compare__flag" data-flag="sumer">Sumerian / Akkadian</span>
+          <h3>Atrahasis &amp; Gilgamesh XI</h3>
+          <span class="mono">c. 1700 BCE</span>
+        </header>
+        <blockquote>
+          <p>"The gods commanded annihilation… Ea spoke to Atrahasis in a dream: tear down the house, build a boat, save life of every kind. For seven days the deluge swept the land. The boat came to rest on Mount Niṣir. I sent forth a dove…"</p>
+        </blockquote>
+        <ul class="compare__motifs">
+          <li><span class="motif">divine warning in a dream</span></li>
+          <li><span class="motif">vessel of every kind</span></li>
+          <li><span class="motif">seven-day deluge</span></li>
+          <li><span class="motif">mountain landfall</span></li>
+          <li><span class="motif">dove released</span></li>
+        </ul>
+      </article>
+
+      <article class="compare__col">
+        <header>
+          <span class="compare__flag" data-flag="hebrew">Hebrew Bible</span>
+          <h3>Genesis 6–9</h3>
+          <span class="mono">c. 600 BCE</span>
+        </header>
+        <blockquote>
+          <p>"And God said to Noah… make for yourself an ark of gopher wood… of every living thing, two of every sort. The waters prevailed forty days upon the earth. The ark rested upon the mountains of Ararat. He sent forth a dove from him…"</p>
+        </blockquote>
+        <ul class="compare__motifs">
+          <li><span class="motif">divine warning</span></li>
+          <li><span class="motif">vessel of every kind</span></li>
+          <li><span class="motif">forty-day deluge</span></li>
+          <li><span class="motif">mountain landfall</span></li>
+          <li><span class="motif">dove released</span></li>
+        </ul>
+      </article>
+
+      <article class="compare__col">
+        <header>
+          <span class="compare__flag" data-flag="greek">Greek</span>
+          <h3>Ovid, <em>Metamorphoses</em> I</h3>
+          <span class="mono">8 CE</span>
+        </header>
+        <blockquote>
+          <p>"Jupiter, weary with the crimes of men, sent down the rain… only Deucalion and Pyrrha, righteous, survived in their small boat. They came to rest on Mount Parnassus. The waters fell back; the world began again, from stones cast over the shoulder."</p>
+        </blockquote>
+        <ul class="compare__motifs">
+          <li><span class="motif">divine wrath</span></li>
+          <li><span class="motif">righteous pair survives</span></li>
+          <li><span class="motif">small vessel</span></li>
+          <li><span class="motif">mountain landfall</span></li>
+          <li><span class="motif">world repopulated</span></li>
+        </ul>
+      </article>
+
+      <article class="compare__col">
+        <header>
+          <span class="compare__flag" data-flag="vedic">Sanskrit / Vedic</span>
+          <h3>Śatapatha Brāhmaṇa I.8</h3>
+          <span class="mono">c. 700 BCE</span>
+        </header>
+        <blockquote>
+          <p>"A fish came into Manu's hands and said: rear me, and I shall save thee. A flood will sweep away all creatures. Build a ship. When the waters rise, fasten its rope to my horn. The fish drew the ship to the northern mountain. There Manu stepped down — alone."</p>
+        </blockquote>
+        <ul class="compare__motifs">
+          <li><span class="motif">divine warning (theriomorphic)</span></li>
+          <li><span class="motif">vessel</span></li>
+          <li><span class="motif">deluge</span></li>
+          <li><span class="motif">mountain landfall</span></li>
+          <li><span class="motif">sole survivor</span></li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="commentary">
+      <span class="kicker">Editorial commentary</span>
+      <p>
+        The Mesopotamian and Hebrew accounts are textually related — most scholars accept that
+        the Genesis flood draws on the older Atrahasis / Gilgamesh tradition during or after the
+        Babylonian exile, when Israelite scribes lived inside the very library that preserved
+        those tablets.<a href="#" data-cite="cite-13">[A]</a> The Greek and Vedic accounts are
+        independent, and yet share the same skeleton: a god, a warning, a vessel, a mountain,
+        a beginning again.
+      </p>
+      <p>
+        There are three live explanations and we name all three. <strong>Diffusion</strong> — the story
+        spread by trade and conquest across Eurasia, deeper and earlier than we usually
+        assume.<a href="#" data-cite="cite-14">[B]</a> <strong>Archetype</strong> — the human imagination keeps
+        producing the same shape, because the shape is doing something for us.<a href="#" data-cite="cite-15">[C]</a>
+        <strong>Memory</strong> — somewhere, an actual flood (the end of the last ice age, the Black Sea
+        breach, a Mesopotamian inundation) seeded all of them. <a href="#" data-cite="cite-16">[D]</a>
+        Tracking Faith doesn't pick. We point at the texts.
+      </p>
+    </section>
+
+    <aside class="sources" aria-label="Sources">
+      <span class="kicker">Sources</span>
+      <ol class="sources__list">
+        <li id="cite-13"><span class="mono">A</span> Lambert, W. G. &amp; Millard, A. R. <em>Atra-Ḫasīs: The Babylonian Story of the Flood.</em> Eisenbrauns, 1999.</li>
+        <li id="cite-14"><span class="mono">B</span> Witzel, E. J. M. <em>The Origins of the World's Mythologies.</em> OUP, 2012.</li>
+        <li id="cite-15"><span class="mono">C</span> Eliade, Mircea. <em>The Myth of the Eternal Return.</em> Princeton, 1954.</li>
+        <li id="cite-16"><span class="mono">D</span> Ryan, W. &amp; Pitman, W. <em>Noah's Flood.</em> Simon &amp; Schuster, 1998.</li>
+      </ol>
+    </aside>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CANON FORMATION VIEW
+     ============================================================ -->
+<section class="view" data-view="canon" data-screen-label="04 Canon Formation" hidden>
+  <div class="article">
+    <nav class="crumbs"><a href="#home" data-nav="home">Home</a> <span>/</span> <em>Canon Formation</em></nav>
+
+    <header class="article__head">
+      <span class="kicker">Canon · the political &amp; human story</span>
+      <h1 class="article__title">How the Bible came to be the Bible.</h1>
+      <p class="article__dek">
+        It wasn't one council. It wasn't one decision. The Christian canon was negotiated for
+        nearly four centuries — and revised, in places, for fifteen more. Here is who was in
+        the room and what they argued.
+      </p>
+    </header>
+
+    <section class="timeline">
+      <div class="timeline__rail"></div>
+
+      <article class="tl">
+        <div class="tl__date"><span class="mono">c. 140</span><span class="tl__era">CE</span></div>
+        <div class="tl__card">
+          <h3>Marcion proposes the first canon — and is rejected</h3>
+          <p>The shipping magnate Marcion of Sinope publishes a New Testament: one gospel (a redacted Luke) and ten Pauline letters. He rejects the Hebrew scriptures and the god he reads in them. The church rejects him. But the question — <em>which books?</em> — is now open.</p>
+          <div class="tl__tags"><span>Rome</span><span>excluded</span><span>first list</span></div>
+        </div>
+      </article>
+
+      <article class="tl">
+        <div class="tl__date"><span class="mono">325</span><span class="tl__era">CE</span></div>
+        <div class="tl__card">
+          <h3>The Council of Nicaea — not about the canon</h3>
+          <p>Constantine summons about <strong>300 bishops</strong> (Eusebius says 250, others 318) to Nicaea, modern İznik. They debate the relationship of Christ to the Father — Arius (subordinate) versus Athanasius (consubstantial). Athanasius wins. The Nicene Creed is drafted. <em>The canon of scripture is not on the agenda.</em><a href="#" data-cite="cite-N1">[N1]</a></p>
+          <div class="tl__tags"><span>Nicaea</span><span>Constantine</span><span>creed</span></div>
+        </div>
+      </article>
+
+      <article class="tl">
+        <div class="tl__date"><span class="mono">367</span><span class="tl__era">CE</span></div>
+        <div class="tl__card">
+          <h3>Athanasius lists the 27 — for the first time</h3>
+          <p>In his thirty-ninth Festal Letter, the Alexandrian bishop names the books Christians should read. It is the first surviving list that matches the modern New Testament: four gospels, Acts, twenty-one letters, Revelation. Books like the <em>Shepherd of Hermas</em> are demoted to "useful, not canonical."<a href="#" data-cite="cite-N2">[N2]</a></p>
+          <div class="tl__tags"><span>Alexandria</span><span>27 books</span></div>
+        </div>
+      </article>
+
+      <article class="tl">
+        <div class="tl__date"><span class="mono">393–397</span><span class="tl__era">CE</span></div>
+        <div class="tl__card">
+          <h3>Hippo &amp; Carthage ratify the western canon</h3>
+          <p>Augustine's regional councils confirm Athanasius's list for the Latin West. The decision is not yet binding on the whole church — it will take until Trent (1546) to fix the Catholic canon by ecumenical decree, partly in response to Luther.</p>
+          <div class="tl__tags"><span>North Africa</span><span>Augustine</span></div>
+        </div>
+      </article>
+
+      <article class="tl">
+        <div class="tl__date"><span class="mono">1546</span><span class="tl__era">CE</span></div>
+        <div class="tl__card">
+          <h3>Trent fixes the Catholic canon; Luther reshuffles the Protestant one</h3>
+          <p>The Council of Trent declares the Latin Vulgate authoritative, including the deuterocanon (Tobit, Judith, Wisdom, Sirach, Baruch, 1–2 Maccabees). Luther, working in parallel, moves these books into a separate "Apocrypha" section and questions James, Hebrews, Jude, and Revelation — though he leaves them in.</p>
+          <div class="tl__tags"><span>Trent</span><span>Wittenberg</span><span>schism</span></div>
+        </div>
+      </article>
+
+      <article class="tl">
+        <div class="tl__date"><span class="mono">1611</span><span class="tl__era">CE</span></div>
+        <div class="tl__card">
+          <h3>King James authorizes a translation — and a politics</h3>
+          <p>James I commissions a Bible to settle disputes among English Protestants. Forty-seven scholars work for seven years. The translation is masterful and conservative; the canon is the Protestant 66, with the Apocrypha printed between testaments (it was quietly removed from most editions in the nineteenth century).</p>
+          <div class="tl__tags"><span>England</span><span>translation</span><span>politics</span></div>
+        </div>
+      </article>
+    </section>
+
+    <aside class="sources" aria-label="Sources">
+      <span class="kicker">Sources</span>
+      <ol class="sources__list">
+        <li id="cite-N1"><span class="mono">N1</span> Stephenson, Paul. <em>Constantine: Roman Emperor, Christian Victor.</em> Overlook, 2010, ch. 11.</li>
+        <li id="cite-N2"><span class="mono">N2</span> Athanasius, <em>Festal Letter</em> 39 (AD 367). Cf. Metzger, B. <em>The Canon of the New Testament.</em> Clarendon, 1987.</li>
+      </ol>
+    </aside>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     EXCLUDED TEXTS (stub)
+     ============================================================ -->
+<section class="view" data-view="excluded" data-screen-label="05 Excluded Texts" hidden>
+  <div class="article article--narrow">
+    <nav class="crumbs"><a href="#home" data-nav="home">Home</a> <span>/</span> <em>Excluded Texts</em></nav>
+    <header class="article__head">
+      <span class="kicker">Excluded&nbsp;Texts · library</span>
+      <h1 class="article__title">Books the council didn't choose.</h1>
+      <p class="article__dek">
+        Gnostic, Enochian, Hermetic, apocryphal — read them carefully, with context. None
+        were lost in some cinematic conspiracy; most were excluded for documented theological
+        and political reasons we can describe.
+      </p>
+    </header>
+
+    <ul class="lib">
+      <li><span class="mono">№ 01</span><h4>The Gospel of Thomas</h4><p>114 sayings, no narrative, found at Nag Hammadi in 1945. About a third overlap with the synoptic gospels. Probably second-century in its present form; some sayings may predate the canonical gospels.</p></li>
+      <li><span class="mono">№ 02</span><h4>1 Enoch</h4><p>Pre-Christian Jewish apocalypse. The source for the Watchers / Nephilim mythos. Quoted in Jude. Canonical in the Ethiopian Orthodox Bible to this day.</p></li>
+      <li><span class="mono">№ 03</span><h4>The Gospel of Mary</h4><p>Fragmentary. Mary Magdalene reports a vision Jesus gave her privately. Peter doubts her; Levi defends her. Composed in the early-to-mid second century.</p></li>
+      <li><span class="mono">№ 04</span><h4>The Gospel of Judas</h4><p>Recovered 1970s, published 2006. Recasts Judas as the disciple who understood. Coptic translation of a Greek original, c. 150 CE. Sethian Gnostic.</p></li>
+      <li><span class="mono">№ 05</span><h4>The Shepherd of Hermas</h4><p>Popular early-Christian visionary text, widely treated as scripture in the second and third centuries. Listed by Athanasius (367) as <em>useful, not canonical</em>.</p></li>
+      <li><span class="mono">№ 06</span><h4>The Pistis Sophia</h4><p>Third- or fourth-century Coptic text. Long dialogues between the risen Jesus and his disciples, especially Mary. Cosmological, esoteric, highly disputed.</p></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+
+<!-- ============================================================
+     CITATION DRAWER (right side)
+     ============================================================ -->
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer__panel">
+    <header class="drawer__head">
+      <span class="kicker">Source</span>
+      <button class="drawer__close" id="drawer-close" aria-label="Close source drawer">✕</button>
+    </header>
+    <div class="drawer__body" id="drawer-body"></div>
+    <footer class="drawer__foot">
+      <span class="mono">Every claim cites its source.</span>
+      <a href="#" data-drawer="citations-manifesto">Read our citation policy →</a>
+    </footer>
+  </div>
+  <div class="drawer__scrim" id="drawer-scrim"></div>
+</aside>
+
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="foot">
+  <div class="foot__cols">
+    <div>
+      <img src="assets/logo-transparent.png" alt="" class="foot__mark" />
+      <p class="foot__manifesto"><em>Tracking Faith</em> is an independent editorial project tracing scripture, myth, and history across traditions. Spiritually curious, institutionally agnostic, editorially strict.</p>
+    </div>
+    <div>
+      <span class="kicker">Modules</span>
+      <ul class="foot__list">
+        <li><a href="#jesus" data-nav="jesus">Historical Jesus</a></li>
+        <li><a href="#parallels" data-nav="parallels">Parallel Stories</a></li>
+        <li><a href="#canon" data-nav="canon">Canon Formation</a></li>
+        <li><a href="#excluded" data-nav="excluded">Excluded Texts</a></li>
+      </ul>
+    </div>
+    <div>
+      <span class="kicker">Editorial</span>
+      <ul class="foot__list">
+        <li><a href="#">Citation policy</a></li>
+        <li><a href="#">Editorial standards</a></li>
+        <li><a href="#">Submit a parallel</a></li>
+        <li><a href="#">Contact the editors</a></li>
+      </ul>
+    </div>
+    <div>
+      <span class="kicker">Stay close</span>
+      <p class="foot__small">A weekly letter. New modules, new parallels, careful reading.</p>
+      <form class="foot__sub" onsubmit="return false">
+        <input type="email" placeholder="you@somewhere" />
+        <button>Subscribe</button>
+      </form>
+    </div>
+  </div>
+  <div class="foot__bar">
+    <span>© 2026 Tracking Faith</span>
+    <span class="mono">Set in Cormorant Garamond, EB Garamond &amp; JetBrains Mono</span>
+    <span>Made for the spiritually curious</span>
+  </div>
+</footer>
+
+<!-- Citation source-of-truth (read by drawer) -->
+<script type="application/json" id="citation-data">
+{
+  "cite-1":  { "tag":"FIG. 1",  "title":"Codex Sinaiticus",                       "author":"British Library / Leipzig University",                "year":"2009 digital ed.",          "note":"One of the four great uncial codices of the Greek Bible, written c. AD 330–360. Probably produced in Caesarea or Alexandria. The standard early witness to the New Testament text." },
+  "cite-2":  { "tag":"[2]",    "title":"The Aramaic Language and the Study of the NT", "author":"Joseph A. Fitzmyer",                          "year":"JBL 99 (1980), 5–21",       "note":"Canonical survey article. Argues that Aramaic was the dominant spoken language of Jewish Palestine in the first century, with Hebrew used in religious contexts and Greek in urban / administrative ones." },
+  "cite-3":  { "tag":"[3]",    "title":"The Criteria for Authenticity",            "author":"Stanley E. Porter",                                   "year":"T&T Clark, 2000",            "note":"Reviews the linguistic situation and the criteria scholars use to recover historical sayings of Jesus from Greek texts." },
+  "cite-4":  { "tag":"[4]",    "title":"John 19:20 / Tacitus, Annals XV.44",      "author":"Primary sources",                                     "year":"c. 90 CE / 116 CE",          "note":"John names the languages of the cross-titulus as Hebrew, Latin, and Greek. Tacitus, writing for a Roman audience, confirms a historical Christus executed under Pilate." },
+  "cite-5":  { "tag":"[5]",    "title":"Novum Testamentum Graece (NA28)",         "author":"Nestle-Aland",                                        "year":"Deutsche Bibelgesellschaft, 2012", "note":"Standard critical edition of the Greek NT. Apparatus marks the transliterated Aramaic phrases discussed in this section." },
+  "cite-6":  { "tag":"[6]",    "title":"Aramaic Sources of Mark's Gospel",        "author":"Maurice Casey",                                       "year":"Cambridge UP, 1998",        "note":"Argues that substantial portions of Mark are translation Greek from Aramaic written sources. Controversial in its strongest form; widely accepted in its weaker one." },
+  "cite-7":  { "tag":"[7]",    "title":"The Prayers of Jesus",                   "author":"Joachim Jeremias",                                    "year":"SCM Press, 1967",            "note":"Classic argument for the intimate, familial register of abba. Later scholarship has qualified the claim (it was not unique to Jesus) but the contrast with Father remains real." },
+  "cite-8":  { "tag":"[8]",    "title":"An Aramaic Approach to the Gospels and Acts", "author":"Matthew Black",                               "year":"3rd ed., Hendrickson, 1998", "note":"Foundational study of Aramaic substrata behind the synoptic gospels. Catalogues idiom, wordplay, and translation effects." },
+  "cite-9":  { "tag":"[9]",    "title":"The Five Gospels",                        "author":"Funk, Hoover et al. (the Jesus Seminar)",             "year":"Polebridge, 1993",           "note":"Color-coded gospel marking sayings by likelihood of authenticity. Discusses the camel/rope question on pp. 96 and 234." },
+  "cite-10": { "tag":"[10]",   "title":"Jesus the Jew",                          "author":"Géza Vermes",                                         "year":"Collins, 1973",              "note":"Reads bar nasha in its everyday Aramaic sense — generic, idiomatic — before the title hardened in Greek." },
+  "cite-11": { "tag":"[11]",   "title":"The Quest for the Plausible Jesus",       "author":"Gerd Theissen & Dagmar Winter",                       "year":"WJK, 2002",                  "note":"Methodological overview of the criteria used to assess sayings: dissimilarity, multiple attestation, embarrassment, plausibility." },
+  "cite-12": { "tag":"[12]",   "title":"Jesus: Apocalyptic Prophet",              "author":"Bart D. Ehrman",                                      "year":"Oxford UP, 1999",            "note":"Mainstream historical-Jesus reconstruction. Useful especially for the distinction between the Synoptic and Johannine portraits." },
+  "cite-13": { "tag":"[A]",    "title":"Atra-Ḫasīs",                              "author":"W. G. Lambert & A. R. Millard",                       "year":"Eisenbrauns, 1999",          "note":"Standard edition and translation of the Babylonian flood epic. Includes parallels with Genesis and Gilgamesh XI." },
+  "cite-14": { "tag":"[B]",    "title":"The Origins of the World's Mythologies",  "author":"E. J. Michael Witzel",                                "year":"Oxford UP, 2012",            "note":"Comparativist account proposing 'Laurasian' and 'Gondwanan' mythological superfamilies with deep, shared roots." },
+  "cite-15": { "tag":"[C]",    "title":"The Myth of the Eternal Return",         "author":"Mircea Eliade",                                       "year":"Princeton UP, 1954",         "note":"The classic archetype reading: the human mind keeps producing flood, world-tree, and renewal stories because they perform a sacred function." },
+  "cite-16": { "tag":"[D]",    "title":"Noah's Flood",                           "author":"William Ryan & Walter Pitman",                        "year":"Simon & Schuster, 1998",     "note":"Argues that the Black Sea breach (c. 5600 BCE) seeded a deep cultural memory across the ancient Near East. Geologically debated; culturally fertile." },
+  "cite-N1": { "tag":"[N1]",   "title":"Constantine: Roman Emperor, Christian Victor", "author":"Paul Stephenson",                              "year":"Overlook, 2010",             "note":"Ch. 11 covers Nicaea. Constantine convened the council in part to settle Arian disputes that were destabilizing the eastern empire." },
+  "cite-N2": { "tag":"[N2]",   "title":"Festal Letter 39 / The Canon of the NT",  "author":"Athanasius / Bruce Metzger",                          "year":"AD 367 / 1987",              "note":"Athanasius's letter is the first surviving document that lists exactly the 27 books of the modern NT. Metzger remains the standard scholarly history of canon formation." },
+  "citations-manifesto": { "tag":"POLICY", "title":"How we cite", "author":"the editors", "year":"2026", "note":"Every factual claim links to a primary source or peer-reviewed study. Translations are our own unless noted. Where scholars disagree we name them and quote both sides. Where a tradition is sacred to a community, we treat it that way. No anonymous summaries; no AI-generated source claims." }
+}
+</script>
+
+
+<!-- TWEAK DEFAULTS — host writes back here -->
+<script>
+window.TF_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "palette": "ink",
+  "density": "airy",
+  "featured": "jesus",
+  "showOrnaments": true
+}/*EDITMODE-END*/;
+</script>
+
+<script src="router.js"></script>
+
+<!-- Tweaks: React mounts to a separate root; main content is plain HTML -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<div id="tweaks-root"></div>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="app-tweaks.jsx"></script>
+
+</body>
+</html>
