@@ -242,3 +242,9 @@ client's logo.
 | `CLIENT_HOURS_JSON` | JSON-LD OpeningHoursSpecification array |
 | `CLIENT_COLOR_SURFACE` | 6-char hex without `#` — loading screen background (matches `COLOR_SURFACE`) |
 | `CLIENT_COLOR_PRIMARY` | 6-char hex without `#` — loading screen spinner colour (matches `COLOR_PRIMARY`) |
+
+## Asset Credits
+
+| File | Source | License | Attribution |
+|------|--------|---------|-------------|
+| `assets/archaeological/zoroastrian-context.jpg` | [Wikimedia Commons — Persepolis - carved Faravahar.JPG](https://commons.wikimedia.org/wiki/File:Persepolis_-_carved_Faravahar.JPG) | Public domain (ancient artifact, photograph pre-2009) | Photo: Wikimedia Commons contributor, Persepolis, Iran |

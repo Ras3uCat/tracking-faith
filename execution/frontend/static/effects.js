@@ -201,7 +201,7 @@
         const p = Math.max(0, Math.min(1, (prog - start) / (end - start)));
         const eased = 1 - Math.pow(1 - p, 3);
         const startY = window.innerHeight * 0.65;
-        const endY = i * STACK_OFFSET - fanCenter;
+        const endY = i * STACK_OFFSET - fanCenter - 100;
         const ty = startY + (endY - startY) * eased;
         const rot = (1 - eased) * (i % 2 === 0 ? -2.2 : 2.2);
         const scale = 0.93 + eased * 0.07;
@@ -510,6 +510,111 @@
   }
 
   // ============================================================
+  // (7) LANG MAP — clickable city tooltips
+  // ============================================================
+  function initLangMap() {
+    const figure = document.querySelector('.lang-map-wrap');
+    if (!figure) return;
+    const tooltip = figure.querySelector('.lang-map-tooltip');
+    const svg     = figure.querySelector('.lang-map');
+    const cities  = figure.querySelectorAll('.lm-city');
+    if (!tooltip || !cities.length) return;
+
+    const CITY_DATA = {
+      jerusalem: {
+        name: 'Jerusalem',
+        date: 'Roman Judea · 1st c. CE',
+        text: 'Temple liturgy in Hebrew; street speech in Aramaic; Roman administration in Latin. Capital of Judea under Roman procurators, with a population estimated at 80,000.'
+      },
+      caesarea: {
+        name: 'Caesarea Maritima',
+        date: 'Built c. 25–13 BC',
+        text: 'Roman administrative capital of Judea. Latin for official business; Greek in the marketplace and port. Herod the Great\'s showpiece city, built on the Mediterranean coast.'
+      },
+      capernaum: {
+        name: 'Capernaum',
+        date: 'Galilee · 1st c. CE',
+        text: 'Jesus\'s operational base in Galilee (Matt 4:13). An Aramaic-speaking fishing village on the north shore of the Sea of Galilee — site of the synagogue where he taught.'
+      },
+      nazareth: {
+        name: 'Nazareth',
+        date: 'Galilee · 1st c. CE',
+        text: 'Jesus\'s hometown (Luke 2:39). A small Galilean village, population estimated 200–400. Aramaic-speaking throughout; no evidence of a Greek-speaking population.'
+      }
+    };
+
+    let active = null;
+
+    function placeTooltip(pxPct, pyPct) {
+      const svgRect = svg.getBoundingClientRect();
+      const figRect = figure.getBoundingClientRect();
+      const tipW = tooltip.offsetWidth  || 210;
+      const tipH = tooltip.offsetHeight || 120;
+      // City position relative to the figure (the absolute-positioning context)
+      const relX = (svgRect.left - figRect.left) + svgRect.width  * pxPct / 100;
+      const relY = (svgRect.top  - figRect.top)  + svgRect.height * pyPct / 100;
+      // Prefer above the dot; fall back to below
+      const above = relY - tipH - 14;
+      const top   = above > 4 ? above : relY + 14;
+      // Clamp horizontally inside figure
+      const left  = Math.min(Math.max(relX - tipW / 2, 4), figRect.width - tipW - 4);
+      tooltip.style.left = `${left}px`;
+      tooltip.style.top  = `${top}px`;
+    }
+
+    function show(city) {
+      const data = CITY_DATA[city.dataset.city];
+      if (!data) return;
+      tooltip.innerHTML =
+        `<strong>${data.name}</strong>` +
+        `<span class="lang-map-tooltip__date">${data.date}</span>` +
+        data.text;
+      tooltip.hidden = false;
+      // Position after paint so offsetHeight is accurate
+      requestAnimationFrame(() => {
+        placeTooltip(parseFloat(city.dataset.px), parseFloat(city.dataset.py));
+        tooltip.classList.add('is-visible');
+      });
+      active = city.dataset.city;
+    }
+
+    function hide() {
+      tooltip.classList.remove('is-visible');
+      tooltip.addEventListener('transitionend', () => { tooltip.hidden = true; }, { once: true });
+      active = null;
+    }
+
+    cities.forEach(g => {
+      g.addEventListener('click', e => {
+        e.stopPropagation();
+        if (active === g.dataset.city) { hide(); } else { show(g); }
+      });
+      g.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); g.click(); }
+      });
+    });
+
+    document.addEventListener('click', e => {
+      if (active && !e.target.closest('.lm-city') && !e.target.closest('.lang-map-tooltip')) hide();
+    });
+
+    svg.addEventListener('click', e => {
+      if (e.target.closest('.lm-city')) return;
+      if (!window.__tf || !window.__tf.openLightbox) return;
+      const serialized = new XMLSerializer().serializeToString(svg);
+      const dataUrl = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(serialized);
+      window.__tf.openLightbox({
+        src: dataUrl,
+        alt: 'Language distribution in the Holy Land, 1st century CE',
+        getBoundingClientRect: () => svg.getBoundingClientRect(),
+        getAttribute: attr => attr === 'data-caption'
+          ? 'Language distribution in the Holy Land, 1st century CE'
+          : null
+      });
+    });
+  }
+
+  // ============================================================
   // Init everything; re-init on view changes
   // ============================================================
   function bootAll() {
@@ -522,6 +627,7 @@
     initReveal();
     initMarquee();
     initParallelsTab();
+    initLangMap();
   }
 
   // Safe to call on every view switch: only runs idempotent or guarded inits.

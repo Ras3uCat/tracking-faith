@@ -18,7 +18,7 @@ Five issues that prevent the site from functioning correctly in production. All 
 
 ## Tasks
 
-- [ ] **SITE_URL**: Set production domain in `client.json` once hosting is chosen. Also update the Supabase project dashboard under **Auth > URL Configuration > Site URL** and **Redirect URLs**. Needed for auth redirects and OG canonical links.
+- [x] **SITE_URL**: `https://trackingfaith.com` set in `client.json:24` and all OG/canonical tags in `index.html`. **Manual step remaining:** Supabase dashboard → Auth > URL Configuration → set Site URL to `https://trackingfaith.com` and add `https://trackingfaith.com/**` to Redirect URLs.
   - **Done when:** Auth post-login redirect lands on the correct route; OG canonical tag renders the production URL.
 
 - [ ] **RESEND_KEY + FROM_EMAIL** (edge function secret): Run `supabase secrets set RESEND_KEY=... FROM_EMAIL=...`. Do not add to `client.json`. Unblocks `send-contact` and `send-monthly-digest` edge functions.
@@ -41,7 +41,7 @@ The four remaining tasks require credentials or hosting decisions that only you 
 
 | Task | What's needed |
 |------|---------------|
-| **SITE_URL** | Choose production domain → update `client.json` + Supabase dashboard (Auth > URL Configuration > Site URL & Redirect URLs) |
+| **SITE_URL** | ~~Code done.~~ Supabase dashboard → Auth > URL Configuration → Site URL = `https://trackingfaith.com`, Redirect URLs = `https://trackingfaith.com/**` |
 | **RESEND_KEY + FROM_EMAIL** | Resend account key → `supabase secrets set RESEND_KEY=... FROM_EMAIL=...` |
 | **ANTHROPIC_API_KEY** | Anthropic key → `supabase secrets set ANTHROPIC_API_KEY=...` |
 | **SUPABASE_SERVICE_ROLE_KEY** | Supabase project settings → `supabase secrets set SUPABASE_SERVICE_ROLE_KEY=...` |

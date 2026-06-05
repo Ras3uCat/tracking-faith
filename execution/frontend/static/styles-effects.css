@@ -471,6 +471,11 @@ html[data-palette="ink"] .editorial__words {
   -webkit-text-stroke-color: var(--gold);
   opacity: .35;
 }
+.editorial__words > div:nth-child(1) {
+  text-align: right;
+  padding-right: 6vw;
+  transform: translateY(-12vw);
+}
 .editorial__words > div:nth-child(2) {
   text-align: left;
   padding-left: 4vw;
@@ -483,7 +488,7 @@ html[data-palette="ink"] .editorial__words {
 }
 .editorial__plate {
   position: relative;
-  max-width: 540px;
+  max-width: 860px;
   margin: 0 auto;
   z-index: 2;
   will-change: transform;
@@ -494,7 +499,7 @@ html[data-palette="ink"] .editorial__words {
     0 30px 60px -20px rgba(20,14,8,.40),
     0 0 0 1px var(--rule);
 }
-.editorial__plate .plate__art { aspect-ratio: 3/4; }
+.editorial__plate .plate__art { aspect-ratio: 16/9; }
 .editorial__caption {
   max-width: 520px;
   margin: clamp(28px, 4vw, 48px) auto 0;

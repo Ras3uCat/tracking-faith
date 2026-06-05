@@ -1,9 +1,10 @@
 # Feature 116 — Bible Version Comparison
 
-**Status:** Backlog
+**Status:** Active — Implementation complete, pending QA
 **Type:** Content Page
-**URL Slug:** `/bible-versions`
-**Relationship:** Companion to Canon Formation (cross-link both pages)
+**Pillar:** The Bible
+**URL Slug:** `bible-versions`
+**Relationship:** Companion to Canon Formation — forms the first two articles in The Bible pillar. Cross-link both pages. Next in the pillar: The Apocrypha (117), Nag Hammadi (118), Lost Books (119).
 
 ---
 
