@@ -1,0 +1,35 @@
+{
+    "name": "Tracking Faith",
+    "short_name": "FILL_IN",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#0D1B2A",
+    "theme_color": "#B8965A",
+    "description": "tracking faith, what did Jesus teach, where did the bible come from",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "icons/Icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-maskable-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/Icon-maskable-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}

@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /admin
+
+Sitemap: FILL_IN/sitemap.xml
