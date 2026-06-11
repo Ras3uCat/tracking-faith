@@ -41,6 +41,7 @@
   inset: 0;
   z-index: -1;
   pointer-events: none;
+  background: var(--paper);
 }
 .hero__title {
   position: relative;
@@ -630,8 +631,11 @@ main {
   font-size: 15px;
 }
 @media (max-width: 560px) {
-  .foot__frame { inset: 6px; }
-  .foot-manifesto { padding: clamp(14px, 3vh, 28px) var(--gutter); }
+  .foot__frame { inset: 2px 6px; }
+  .foot-manifesto {
+    align-items: flex-end;
+    padding: clamp(14px, 3vh, 28px) var(--gutter) clamp(18px, 2.5vh, 28px);
+  }
   .foot-manifesto__inner .kicker { margin-bottom: 10px; }
   .foot-manifesto__body { font-size: clamp(15px, 4vw, 20px); margin-bottom: 10px; }
   .foot-manifesto__sig  { font-size: 13px; }
