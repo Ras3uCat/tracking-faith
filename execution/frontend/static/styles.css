@@ -1436,13 +1436,26 @@ html[data-palette="ink"] .hero__title em { color: var(--gold); }
   grid-template-columns: 2fr 1fr 1.4fr;
   gap: clamp(28px, 4vw, 64px);
 }
-@media (max-width: 800px) { .foot__cols { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 800px) {
+  .foot {
+    padding-top: 8px;
+    padding-bottom: 0;
+  }
+  .foot__cols {
+    grid-template-columns: 1fr 1.5fr;
+    gap: 12px 16px;
+  }
+  /* Stay close spans both columns so its form never overflows into the editor column */
+  .foot__cols > div:nth-child(3) { grid-column: 1 / -1; }
+  .foot__privacy { margin-bottom: 0; }
+}
 @media (max-width: 560px) {
-  .foot__cols { grid-template-columns: 1fr; gap: 32px; }
-  .foot__bar { flex-direction: column; align-items: flex-start; gap: 4px; padding-top: 12px; }
-  .foot__sub { flex-wrap: wrap; }
-  .foot__sub input { width: 100%; }
-  .foot__sub button { width: 100%; padding: 10px 16px; }
+  .foot__mark { display: none; }
+  /* TF text column wider, editorial column narrower (links are short + right-aligned) */
+  .foot__cols { grid-template-columns: 1.5fr 1fr; }
+  .foot__cols > div:nth-child(2) { text-align: right; }
+  .foot__manifesto { font-size: 13px; }
+  .foot__list li { font-size: 13px; padding: 4px 0; }
 }
 .foot__mark { width: 56px; margin-bottom: 16px; }
 .foot__manifesto { font-size: 15px; color: var(--ink-soft); max-width: 36ch; text-wrap: pretty; }
@@ -1484,6 +1497,24 @@ html[data-palette="ink"] .hero__title em { color: var(--gold); }
   letter-spacing: .15em; text-transform: uppercase;
   color: var(--ink-mute);
   flex-wrap: wrap; gap: 12px;
+}
+@media (max-width: 800px) {
+  .foot__bar { margin: 12px auto 0; padding-top: 8px; font-size: 9px; letter-spacing: .08em; gap: 6px; }
+}
+@media (max-width: 560px) {
+  /* Row 1: © 2026 full-width. Row 2: "Made for…" left · "Dev × Ras3uCat" right */
+  .foot__bar {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2px 8px;
+    margin-top: 10px;
+    padding-top: 6px;
+  }
+  .foot__bar > span:first-child { grid-column: 1 / -1; grid-row: 1; }
+  .foot__bar > span:last-child  { grid-column: 1;      grid-row: 2; }
+  .foot__bar > a                { grid-column: 2;      grid-row: 2; }
+  .foot__sub input  { padding-top: 6px; padding-bottom: 6px; }
+  .foot__sub button { padding-top: 6px; padding-bottom: 6px; }
 }
 
 /* ============================================================
