@@ -69,18 +69,20 @@ class HomeView extends StatelessWidget {
           'YT': AppEnv.youtubeUrl,
         }.entries.where((e) => e.value.isNotEmpty).toList();
 
-    return Container(
-      color: const Color(0xFF0D0D0D),
-      padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 80),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            '© ${DateTime.now().year} ${AppEnv.clientName}',
-            style: ETextStyles.caption.copyWith(color: Colors.white54),
-          ),
-          if (socials.isNotEmpty)
-            Row(
+    final copyright = Text(
+      '© ${DateTime.now().year} ${AppEnv.clientName}',
+      style: ETextStyles.caption.copyWith(color: Colors.white54),
+    );
+
+    final credit = Text(
+      'Powered by Raspucat',
+      style: ETextStyles.caption.copyWith(color: Colors.white24),
+    );
+
+    final socialsRow =
+        socials.isEmpty
+            ? null
+            : Row(
               mainAxisSize: MainAxisSize.min,
               children:
                   socials
@@ -101,10 +103,37 @@ class HomeView extends StatelessWidget {
                         ),
                       )
                       .toList(),
+            );
+
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final isMobile = constraints.maxWidth < 600;
+
+        if (isMobile) {
+          return Container(
+            color: const Color(0xFF0D0D0D),
+            padding: const EdgeInsets.symmetric(vertical: 48, horizontal: 24),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                copyright,
+                if (socialsRow != null) ...[const SizedBox(height: 20), socialsRow],
+                const SizedBox(height: 20),
+                credit,
+              ],
             ),
-          Text('Powered by Raspucat', style: ETextStyles.caption.copyWith(color: Colors.white24)),
-        ],
-      ),
+          );
+        }
+
+        return Container(
+          color: const Color(0xFF0D0D0D),
+          padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 80),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [copyright, if (socialsRow != null) socialsRow, credit],
+          ),
+        );
+      },
     );
   }
 }

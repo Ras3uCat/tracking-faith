@@ -182,7 +182,7 @@ class _MobileShell extends StatelessWidget {
         ),
       ),
       drawer: _NavDrawer(),
-      body: child,
+      body: SingleChildScrollView(child: child),
     );
   }
 }
