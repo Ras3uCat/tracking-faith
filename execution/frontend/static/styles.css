@@ -29,6 +29,7 @@
 
 /* Palette variants -------------------------------------------------- */
 html[data-palette="ink"] {
+  color-scheme: dark;
   --paper:      #14110d;
   --paper-2:    #1e1a14;
   --paper-edge: #2c2519;
