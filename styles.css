@@ -1438,8 +1438,8 @@ html[data-palette="ink"] .hero__title em { color: var(--gold); }
 }
 @media (max-width: 800px) {
   .foot {
-    padding-top: 8px;
-    padding-bottom: 0;
+    padding-top: 10px;
+    padding-bottom: 8px;
   }
   .foot__cols {
     grid-template-columns: 1fr 1.5fr;
@@ -1454,7 +1454,7 @@ html[data-palette="ink"] .hero__title em { color: var(--gold); }
   /* TF text column wider, editorial column narrower (links are short + right-aligned) */
   .foot__cols { grid-template-columns: 1.5fr 1fr; }
   .foot__cols > div:nth-child(2) { text-align: right; }
-  .foot__manifesto { font-size: 13px; }
+  .foot__manifesto { font-size: 13px; margin-top: 0; margin-bottom: 0; }
   .foot__list li { font-size: 13px; padding: 4px 0; }
 }
 .foot__mark { width: 56px; margin-bottom: 16px; }
