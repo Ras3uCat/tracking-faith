@@ -130,15 +130,6 @@
     if (e.key === 'Escape') closeCite();
   });
 
-  // search button — disabled until search feature is built
-  const searchBtn = document.getElementById('search-btn');
-  if (searchBtn) {
-    searchBtn.disabled = true;
-    searchBtn.style.opacity = '0.4';
-    searchBtn.style.cursor = 'not-allowed';
-    searchBtn.setAttribute('title', 'Search coming soon');
-  }
-
   // ---- lightbox
   const lbEl = document.createElement('div');
   lbEl.className = 'lightbox';
