@@ -389,7 +389,7 @@ html[data-palette="ink"] .kicker { color: var(--gold); }
 /* ============================================================
    HERO
    ============================================================ */
-.hero { padding-top: clamp(40px, 7vw, 96px); padding-bottom: clamp(40px, 6vw, 80px); }
+.hero { padding-top: clamp(40px, 7vw, 96px); padding-bottom: clamp(40px, 6vw, 80px); background: var(--paper); }
 
 .hero__rule {
   display: flex;
@@ -1437,6 +1437,13 @@ html[data-palette="ink"] .hero__title em { color: var(--gold); }
   gap: clamp(28px, 4vw, 64px);
 }
 @media (max-width: 800px) { .foot__cols { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) {
+  .foot__cols { grid-template-columns: 1fr; gap: 32px; }
+  .foot__bar { flex-direction: column; align-items: flex-start; gap: 4px; padding-top: 12px; }
+  .foot__sub { flex-wrap: wrap; }
+  .foot__sub input { width: 100%; }
+  .foot__sub button { width: 100%; padding: 10px 16px; }
+}
 .foot__mark { width: 56px; margin-bottom: 16px; }
 .foot__manifesto { font-size: 15px; color: var(--ink-soft); max-width: 36ch; text-wrap: pretty; }
 .foot__list { list-style: none; padding: 0; margin: 12px 0 0; }
