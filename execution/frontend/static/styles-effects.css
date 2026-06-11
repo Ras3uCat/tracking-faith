@@ -629,6 +629,13 @@ main {
   color: var(--ink-mute);
   font-size: 15px;
 }
+@media (max-width: 560px) {
+  .foot__frame { inset: 6px; }
+  .foot-manifesto { padding: clamp(14px, 3vh, 28px) var(--gutter); }
+  .foot-manifesto__inner .kicker { margin-bottom: 10px; }
+  .foot-manifesto__body { font-size: clamp(15px, 4vw, 20px); margin-bottom: 10px; }
+  .foot-manifesto__sig  { font-size: 13px; }
+}
 
 /* ============================================================
    ARAMAIC TABLE — row stagger when parent section reveals
