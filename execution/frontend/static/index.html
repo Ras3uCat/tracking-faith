@@ -4,7 +4,11 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <meta name="theme-color" content="#14110d" />
-<style>html,body{background:#14110d;color-scheme:dark light}</style>
+<style>
+  :root{--paper:#14110d;--paper-2:#1e1a14;--ink:#f1e8d6;--gold:#b8893d}
+  html,body{background:#14110d}
+  .hero{background:#14110d}
+</style>
 <title>Tracking Faith — same story, told differently</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -341,7 +345,7 @@
 <section class="view" data-view="home" data-screen-label="01 Home" id="main-content">
 
   <!-- HERO with particle field + scramble title -->
-  <section class="hero hero--epic">
+  <section class="hero hero--epic" style="background:#14110d">
     <canvas id="hero-particles" class="hero__canvas" aria-hidden="true"></canvas>
     <div class="hero__static" aria-hidden="true"></div>
 
