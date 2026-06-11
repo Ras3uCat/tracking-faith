@@ -4,9 +4,11 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <meta name="theme-color" content="#14110d" />
+<meta name="color-scheme" content="dark" />
 <style>
   :root{--paper:#14110d;--paper-2:#1e1a14;--ink:#f1e8d6;--gold:#b8893d}
-  html,body{background:#14110d}
+  html{color-scheme:dark;background:#14110d}
+  body{background:#14110d}
   .hero{background:#14110d}
 </style>
 <title>Tracking Faith — same story, told differently</title>
@@ -4141,8 +4143,39 @@ window.TF_EFFECTS = window.TF_DEFAULTS.effects !== false;
 })();
 </script>
 
+<!-- Search modal -->
+<div id="search-modal" class="search-modal" role="dialog" aria-modal="true" aria-label="Search" aria-hidden="true" inert>
+  <div id="search-scrim" class="search-modal__scrim"></div>
+  <div class="search-modal__panel">
+    <div class="search-modal__head">
+      <label for="search-input" class="search-modal__label">Search</label>
+      <button id="search-close" class="search-modal__close" aria-label="Close search">✕</button>
+    </div>
+    <div class="search-modal__field">
+      <input
+        id="search-input"
+        class="search-modal__input"
+        type="search"
+        placeholder="Type to search…"
+        autocomplete="off"
+        autocorrect="off"
+        spellcheck="false"
+        aria-controls="search-results"
+        aria-autocomplete="list"
+      >
+    </div>
+    <div id="search-count" class="search-modal__count" aria-live="polite" aria-atomic="true"></div>
+    <ul id="search-results" class="search-results" role="listbox" aria-label="Search results"></ul>
+    <div class="search-modal__foot">
+      <span class="search-modal__hint"><kbd>/</kbd> or <kbd>Cmd K</kbd> to toggle · <kbd>↑↓</kbd> navigate · <kbd>Enter</kbd> select · <kbd>Esc</kbd> close</span>
+    </div>
+  </div>
+</div>
+
 <script src="router.js"></script>
 <script src="effects.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@7/dist/fuse.min.js"></script>
+<script src="search.js"></script>
 
 <!-- Tweaks: React mounts to its own root; main content is plain HTML -->
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
